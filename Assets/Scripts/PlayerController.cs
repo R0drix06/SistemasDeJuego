@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        PlayerMovement();
+        PlayerInput();
 
         PlayerSpeedCap();
 
@@ -55,10 +55,10 @@ public class PlayerController : MonoBehaviour
     {
         Dash();
 
-        PlayerPhysics();
+        PlayerMovement();
     }
 
-    private void PlayerMovement()
+    private void PlayerInput()
     {
         moveDirection = Input.GetAxisRaw("Horizontal"); //hacia donde se mueve el jugador (1 = Derecha, -1 = Izquierda).
 
@@ -139,14 +139,9 @@ public class PlayerController : MonoBehaviour
             currentDashTime = 0;
             dashActive = false;
         }
-
-        if (currentDashTime == dashMaxTime)
-        {
-            rb2d.linearVelocity = new Vector2(0, 0);
-        }
     }
 
-    private void PlayerPhysics()
+    private void PlayerMovement()
     {
         if (moveDirection > 0)
         {
