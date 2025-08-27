@@ -1,5 +1,7 @@
 using System.Runtime.InteropServices;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [Header("Jump")]
     [SerializeField] private bouncingScript bouncer;
     [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float wallJumpForce = 20f;
     [SerializeField] private float coyoteTime = 0.1f;
     [SerializeField] private float bufferTime = 1f;
     private float currentCoyoteTime = 0;
@@ -104,11 +107,11 @@ public class PlayerController : MonoBehaviour
         //Se aplica un impulso vertical y un impulso horizontal en dirección contraria al movimiento del jugador.
         if (moveDirection > 0)
         {
-            rb2d.linearVelocity = new Vector2(-jumpForce, jumpForce);
+            rb2d.linearVelocity = new Vector2(-wallJumpForce, jumpForce);
         }
         else if (moveDirection < 0)
         {
-            rb2d.linearVelocity = new Vector2(jumpForce, jumpForce);
+            rb2d.linearVelocity = new Vector2(wallJumpForce, jumpForce);
         }
     }
 
@@ -233,6 +236,11 @@ public class PlayerController : MonoBehaviour
         if (collision.collider.CompareTag("Wall"))
         {
             wallJumpAvailable = true;
+        }
+
+        if (collision.collider.CompareTag("Spikes"))
+        {
+            SceneManager.LoadScene("SampleScene");
         }
     }
 
