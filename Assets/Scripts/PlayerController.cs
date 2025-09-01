@@ -240,7 +240,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.collider.CompareTag("Spikes"))
         {
-            IterationManager.Instance.ResetLevel();
+            SceneManager.LoadScene("SampleScene");
         }
     }
 
