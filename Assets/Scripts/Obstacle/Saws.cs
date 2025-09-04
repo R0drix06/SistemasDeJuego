@@ -1,17 +1,19 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Saws : MonoBehaviour, IObstacle
+public class Saws : Obstacle
 {
+    public override string Name => "Saw";
+
     private Rigidbody2D rb;
     private int speed;
 
-    public void Behaviour()
+    public override void Behaviour()
     {
         throw new System.NotImplementedException();
     }
 
-    public void ResetLoop()
+    public override void ResetLoop()
     {
         SceneManager.LoadScene("SampleScene");
     }

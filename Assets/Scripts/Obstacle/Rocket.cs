@@ -1,35 +1,37 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Rocket : MonoBehaviour, IObstacle
+public class Rocket : Obstacle
 {
     private Rigidbody2D rb;
-    private int speed = 10;
+    private float speed = 10;
+
+    public override string Name => "Rocket";
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void Behaviour()
-    {
-        rb.linearVelocityX = speed * Time.deltaTime;
-    }
-
-    public void ResetLoop()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
-
-    // Update is called once per frame
     void Update()
     {
         Behaviour();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public override void Behaviour()
     {
-        if (collision.CompareTag("Player"))
+        speed += speed * 2f * Time.deltaTime;
+        Vector2 moveDirection = transform.up * speed;
+        rb.linearVelocity = moveDirection;
+    }
+
+    public override void ResetLoop()
+    {
+        IterationManager.Instance.ResetLevel();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
             ResetLoop();
         }

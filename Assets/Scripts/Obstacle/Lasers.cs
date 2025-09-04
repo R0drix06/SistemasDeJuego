@@ -1,14 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Lasers : MonoBehaviour, IObstacle
+public class Lasers : Obstacle
 {
-    public void Behaviour()
+    public override string Name => "Laser";
+    public override void Behaviour()
     {
         throw new System.NotImplementedException();
     }
 
-    public void ResetLoop()
+    public override void ResetLoop()
     {
         SceneManager.LoadScene("SampleScene");
     }

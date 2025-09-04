@@ -7,19 +7,24 @@ public class IterationManager : MonoBehaviour
 
     private void Awake()
     {
-        if (IterationManager.Instance == null)
+        if (Instance == null)
         {
-            IterationManager.Instance = new IterationManager();
-            DontDestroyOnLoad(this.gameObject);
+            Instance = this;
         }
-        else
+        else if (Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void ResetLevel()
     {
-        SceneManager.LoadScene("SampleScene");
+        //Scene actualScene = SceneManager.GetActiveScene();
+        //string sceneName = actualScene.name;
+        //SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -1,7 +1,6 @@
 using System.Runtime.InteropServices;
 using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -240,7 +239,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.collider.CompareTag("Spikes"))
         {
-            SceneManager.LoadScene("SampleScene");
+            IterationManager.Instance.ResetLevel();
         }
     }
 
