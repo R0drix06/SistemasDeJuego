@@ -4,13 +4,11 @@ public class RocketLauncher : MonoBehaviour
 {
     private ObstacleFactory obstacleFactory;
 
-    private string name = "Rocket";
-
     private float currentTime = 0;
 
     private void Awake()
     {
-        obstacleFactory = new ObstacleFactory();
+        obstacleFactory = GetComponent<ObstacleFactory>();
     }
 
     // Update is called once per frame
@@ -18,9 +16,9 @@ public class RocketLauncher : MonoBehaviour
     {
         currentTime += Time.deltaTime;
 
-        if (currentTime > 5)
+        if (currentTime > 0.5f)
         {
-            obstacleFactory.Create(name);
+            obstacleFactory.Create(obstacleFactory.obstacles[0].GetComponent<Obstacle>().id, transform.position, transform.rotation);
             currentTime = 0;
         }
     }

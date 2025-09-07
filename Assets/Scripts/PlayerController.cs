@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Runtime.InteropServices;
 using UnityEditor.SearchService;
 using UnityEngine;
@@ -36,6 +37,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float turningSpeed = 3f;
     [SerializeField] private float walkingFriction = 0.9f;
 
+    [Header("Invincibility")]
+    [SerializeField] private float invincibilityDuration;
+    public bool invincibility = false;
+
+    [Header("Collision")]
     private bool playerGrounded = false;
 
     void Start()
@@ -83,6 +89,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
         {
             dashActive = true;
+            StartCoroutine(StartInvincibility());
         }
 
         //Rotacion del sprite.
@@ -222,6 +229,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private IEnumerator StartInvincibility()
+    {
+        invincibility = true;
+        yield return new WaitForSeconds(invincibilityDuration);
+        invincibility = false;
+    }
 
     //COLLISSIONS
 

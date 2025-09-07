@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class Saws : Obstacle
 {
-    public override string Name => "Saw";
+    public override string id => "Saw";
 
     private Rigidbody2D rb;
     private int speed;

@@ -364,3 +364,5 @@ MonoBehaviour:
   dashMaxTime: 0.05
   turningSpeed: 3
   walkingFriction: 0.8
+  invincibilityDuration: 0.2
+  invincibility: 0

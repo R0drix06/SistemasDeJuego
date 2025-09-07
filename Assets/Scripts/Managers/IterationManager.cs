@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 public class IterationManager : MonoBehaviour
 {
     public static IterationManager Instance;
+    public int level = 1;
+
+    [SerializeField] private int MaxLevel;
 
     private void Awake()
     {
@@ -20,11 +23,27 @@ public class IterationManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    public string CurrentLevel()
+    {
+        return "Level" + level.ToString();
+    }
+
     public void ResetLevel()
     {
-        //Scene actualScene = SceneManager.GetActiveScene();
-        //string sceneName = actualScene.name;
-        //SceneManager.LoadScene(sceneName);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void NextLevel()
+    {
+        if (level >= MaxLevel)
+        {
+            level = 1;
+        }
+        else
+        {
+            level++;
+        }
+
+        SceneManager.LoadScene("Level" + level.ToString());
     }
 }

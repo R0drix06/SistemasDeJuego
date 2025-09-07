@@ -1,15 +1,22 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Rocket : Obstacle
 {
     private Rigidbody2D rb;
-    private float speed = 10;
 
-    public override string Name => "Rocket";
+    private float speed = 10f;
+    private float rotationSpeed = 100f;
+    private float rotateAmount;
+
+    private GameObject target;
+
+    public override string id => "Rocket";
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        target = GameObject.FindWithTag("Player");
     }
 
     void Update()
@@ -19,9 +26,10 @@ public class Rocket : Obstacle
 
     public override void Behaviour()
     {
-        speed += speed * 2f * Time.deltaTime;
-        Vector2 moveDirection = transform.up * speed;
-        rb.linearVelocity = moveDirection;
+        Vector2 direction = (target.transform.position - transform.position).normalized;
+        float rotateAmount = Vector3.Cross(direction, transform.up).z;
+        rb.angularVelocity = -rotateAmount * rotationSpeed;
+        rb.linearVelocity = transform.up * speed;
     }
 
     public override void ResetLoop()
@@ -34,6 +42,10 @@ public class Rocket : Obstacle
         if (collision.gameObject.CompareTag("Player"))
         {
             ResetLoop();
+        }
+        else if (collision.gameObject)
+        {
+            Destroy(gameObject);
         }
     }
 }

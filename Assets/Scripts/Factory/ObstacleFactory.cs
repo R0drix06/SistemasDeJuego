@@ -3,27 +3,27 @@ using UnityEngine;
 
 public class ObstacleFactory : MonoBehaviour
 {
-    [SerializeField] private Obstacle[] obstacles;
-    private Dictionary<string, Obstacle> obstaclesDictionary;
+    [SerializeField] public GameObject[] obstacles;
+    private Dictionary<string, GameObject> obstaclesDictionary;
 
     private void Awake()
     {
-        obstaclesDictionary = new Dictionary<string, Obstacle>();
+        obstaclesDictionary = new Dictionary<string, GameObject>();
 
-        foreach (var obstacle in obstacles)
+        foreach (var gameObject in obstacles)
         {
-            obstaclesDictionary.Add(obstacle.Name, obstacle);
+            obstaclesDictionary.Add(gameObject.GetComponent<Obstacle>().id, gameObject);
         }
     }
 
-    public Obstacle Create(string name)
+    public GameObject Create(string name, Vector2 position, Quaternion rotation)
     {
-        if (!obstaclesDictionary.TryGetValue(name, out Obstacle obstacle))
+        if (!obstaclesDictionary.TryGetValue(name, out GameObject obstacle))
         {
             Debug.Log("No se encontro obstaculo");
             return null;
         }
         
-        return Instantiate(obstacle);
+        return Instantiate(obstacle, position, rotation);
     }
 }

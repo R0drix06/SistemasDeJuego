@@ -3,7 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class Lasers : Obstacle
 {
-    public override string Name => "Laser";
+    public override string id => "Laser";
+
+    private BoxCollider2D boxCollider;
+
     public override void Behaviour()
     {
         throw new System.NotImplementedException();
@@ -14,15 +17,17 @@ public class Lasers : Obstacle
         SceneManager.LoadScene("SampleScene");
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        
+        boxCollider = GetComponent<BoxCollider2D>();
+        boxCollider.enabled = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
+        {
+            if (controller.invincibility == false) IterationManager.Instance.ResetLevel();
+        } 
     }
 }
