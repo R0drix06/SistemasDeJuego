@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Rocket : Obstacle
+public class Rocket : MonoBehaviour, IObstacle
 {
     private Rigidbody2D rb;
 
@@ -11,7 +11,7 @@ public class Rocket : Obstacle
 
     private GameObject target;
 
-    public override string id => "Rocket";
+    public string id => "Rocket";
 
     private void Awake()
     {
@@ -24,7 +24,7 @@ public class Rocket : Obstacle
         Behaviour();
     }
 
-    public override void Behaviour()
+    public void Behaviour()
     {
         Vector2 direction = (target.transform.position - transform.position).normalized;
         float rotateAmount = Vector3.Cross(direction, transform.up).z;
@@ -32,7 +32,7 @@ public class Rocket : Obstacle
         rb.linearVelocity = transform.up * speed;
     }
 
-    public override void ResetLoop()
+    public void ResetLoop()
     {
         IterationManager.Instance.ResetLevel();
     }

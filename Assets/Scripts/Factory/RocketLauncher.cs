@@ -19,7 +19,7 @@ public class RocketLauncher : MonoBehaviour
 
         if (currentTime > maxTime)
         {
-            obstacleFactory.Create(obstacleFactory.obstacles[0].GetComponent<Obstacle>().id, transform.position, transform.rotation);
+            obstacleFactory.Create(obstacleFactory.obstacles[0].GetComponent<IObstacle>().id, transform.position, transform.rotation);
             currentTime = 0;
         }
     }

@@ -1,18 +1,18 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Lasers : Obstacle
+public class Lasers : MonoBehaviour, IObstacle
 {
-    public override string id => "Laser";
+    public string id => "Laser";
 
     private BoxCollider2D boxCollider;
 
-    public override void Behaviour()
+    public void Behaviour()
     {
         throw new System.NotImplementedException();
     }
 
-    public override void ResetLoop()
+    public void ResetLoop()
     {
         SceneManager.LoadScene("SampleScene");
     }

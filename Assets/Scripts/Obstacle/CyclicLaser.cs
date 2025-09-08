@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CyclicLaser : Obstacle
+public class CyclicLaser : MonoBehaviour ,IObstacle
 {
-    public override string id => "CyclicLaser";
+    public string id => "CyclicLaser";
 
     private float currentTime = 0;
     [SerializeField] public float switchTime;
@@ -16,12 +16,12 @@ public class CyclicLaser : Obstacle
 
     private BoxCollider2D boxCollider;
 
-    public override void Behaviour()
+    public void Behaviour()
     {
         throw new System.NotImplementedException();
     }
 
-    public override void ResetLoop()
+    public void ResetLoop()
     {
         SceneManager.LoadScene("SampleScene");
     }

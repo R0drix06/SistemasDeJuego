@@ -1,11 +1,11 @@
 
 using UnityEngine;
 
-public abstract class Obstacle : MonoBehaviour
+public interface IObstacle
 {
-    public abstract string id { get; }
+    public string id { get; }
 
-    public abstract void Behaviour();
+    public void Behaviour();
 
-    public abstract void ResetLoop();
+    public void ResetLoop();
 }

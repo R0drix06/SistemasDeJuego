@@ -12,7 +12,7 @@ public class ObstacleFactory : MonoBehaviour
 
         foreach (var gameObject in obstacles)
         {
-            obstaclesDictionary.Add(gameObject.GetComponent<Obstacle>().id, gameObject);
+            obstaclesDictionary.Add(gameObject.GetComponent<IObstacle>().id, gameObject);
         }
     }
 

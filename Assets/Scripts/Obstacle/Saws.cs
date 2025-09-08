@@ -1,14 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Saws : Obstacle
+public class Saws : MonoBehaviour, IObstacle
 {
-    public override string id => "Saw";
+    public string id => "Saw";
 
     private Rigidbody2D rb;
     [SerializeField] private int speed;
 
-    [SerializeField] private Transform front;
     [SerializeField] private Transform down;
 
     public LayerMask frontLayer;
@@ -25,11 +24,11 @@ public class Saws : Obstacle
         rb= GetComponent<Rigidbody2D>();
     }
 
-    public override void Behaviour()
+    public void Behaviour()
     {
         rb.linearVelocity = transform.right * speed;
 
-        infoFront = Physics2D.Raycast(front.position, transform.right, distFront, frontLayer);
+        infoFront = Physics2D.Raycast(transform.position, transform.right, distFront, frontLayer);
         infoDown = Physics2D.Raycast(down.position, transform.up * -1, distDown, downLayer);
 
         if (infoFront)
@@ -47,7 +46,7 @@ public class Saws : Obstacle
       Behaviour();  
     }
 
-    public override void ResetLoop()
+    public void ResetLoop()
     {
         IterationManager.Instance.ResetLevel();
     }
@@ -64,7 +63,7 @@ public class Saws : Obstacle
     {
         Gizmos.color = Color.red;
 
-        Gizmos.DrawLine(front.position, front.position + transform.right * distFront);
+        Gizmos.DrawLine(transform.position, transform.position + transform.right * distFront);
         Gizmos.DrawLine(down.position, down.position + transform.up * -1 * distDown);
     }
 }
