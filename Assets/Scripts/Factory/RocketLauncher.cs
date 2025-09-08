@@ -4,6 +4,7 @@ public class RocketLauncher : MonoBehaviour
 {
     private ObstacleFactory obstacleFactory;
 
+    [SerializeField] private float maxTime;
     private float currentTime = 0;
 
     private void Awake()
@@ -16,7 +17,7 @@ public class RocketLauncher : MonoBehaviour
     {
         currentTime += Time.deltaTime;
 
-        if (currentTime > 0.5f)
+        if (currentTime > maxTime)
         {
             obstacleFactory.Create(obstacleFactory.obstacles[0].GetComponent<Obstacle>().id, transform.position, transform.rotation);
             currentTime = 0;

@@ -24,7 +24,7 @@ public class bouncingScript : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.J)) //Activo el sprite renderer y collider, reseteo el timer.
+        if (Input.GetKeyDown(KeyCode.X)) //Activo el sprite renderer y collider, reseteo el timer.
         {
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
             gameObject.GetComponent<BoxCollider2D>().enabled = true;

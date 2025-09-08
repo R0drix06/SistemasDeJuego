@@ -75,18 +75,18 @@ public class PlayerController : MonoBehaviour
             rb2d.linearVelocity = new Vector2(0, jumpForce);
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             jumpBuffered = true;
             currentBufferTime = bufferTime; //Reseteo el timer del buffer.
         }
 
-        if (Input.GetKeyUp(KeyCode.K) && rb2d.linearVelocity.y > 0)
+        if (Input.GetKeyUp(KeyCode.X) && rb2d.linearVelocity.y > 0)
         {
             rb2d.linearVelocityY = rb2d.linearVelocity.y * 0.35f; //Si se deja de presionar el botón de salto, el impulso vertical disminuye.
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             dashActive = true;
             StartCoroutine(StartInvincibility());
