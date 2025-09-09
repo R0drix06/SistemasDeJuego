@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class RocketLauncher : MonoBehaviour
@@ -12,8 +13,7 @@ public class RocketLauncher : MonoBehaviour
         obstacleFactory = GetComponent<ObstacleFactory>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Update()
     {
         currentTime += Time.deltaTime;
 

@@ -6,7 +6,7 @@ public class bouncingScript : MonoBehaviour
     private float currentTime = 0;
 
     public bool playerBouncing = false;
-    
+
     void Start()
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -14,7 +14,7 @@ public class bouncingScript : MonoBehaviour
     }
 
     
-    void Update()
+    public void Update()
     {
         currentTime += Time.deltaTime;
 

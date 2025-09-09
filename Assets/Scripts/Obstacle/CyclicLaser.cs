@@ -16,23 +16,19 @@ public class CyclicLaser : MonoBehaviour ,IObstacle
 
     private BoxCollider2D boxCollider;
 
-    public void Behaviour()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void ResetLoop()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
-
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
+
+    }
+  
+    public void Update()
+    {
+        Behaviour();
     }
 
-    private void Update()
+    public void Behaviour()
     {
         if (!active)
         {
@@ -58,6 +54,11 @@ public class CyclicLaser : MonoBehaviour ,IObstacle
         }
     }
 
+    public void ResetLoop()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
@@ -65,4 +66,5 @@ public class CyclicLaser : MonoBehaviour ,IObstacle
             if (controller.invincibility == false) IterationManager.Instance.ResetLevel();
         }
     }
+
 }

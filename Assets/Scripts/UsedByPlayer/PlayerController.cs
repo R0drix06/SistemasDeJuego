@@ -48,9 +48,10 @@ public class PlayerController : MonoBehaviour
     {
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        
     }
     
-    void Update()
+    public void Update()
     {
         PlayerInput();
 

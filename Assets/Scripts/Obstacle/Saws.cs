@@ -22,6 +22,12 @@ public class Saws : MonoBehaviour, IObstacle
     private void Awake()
     {
         rb= GetComponent<Rigidbody2D>();
+
+    }
+
+    public void Update()
+    {
+        Behaviour();
     }
 
     public void Behaviour()
@@ -39,11 +45,6 @@ public class Saws : MonoBehaviour, IObstacle
         {
             transform.Rotate(0f, 0f, -90f);
         }
-    }
-
-    void Update()
-    {
-      Behaviour();  
     }
 
     public void ResetLoop()
@@ -66,4 +67,6 @@ public class Saws : MonoBehaviour, IObstacle
         Gizmos.DrawLine(transform.position, transform.position + transform.right * distFront);
         Gizmos.DrawLine(down.position, down.position + transform.up * -1 * distDown);
     }
+
+
 }

@@ -17,9 +17,10 @@ public class Rocket : MonoBehaviour, IObstacle
     {
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player");
+
     }
 
-    void Update()
+    public void Update()
     {
         Behaviour();
     }
@@ -48,6 +49,5 @@ public class Rocket : MonoBehaviour, IObstacle
             Destroy(gameObject);
         }
     }
-
 
 }

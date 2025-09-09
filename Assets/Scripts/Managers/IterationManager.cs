@@ -10,17 +10,16 @@ public class IterationManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else if (Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-
-        DontDestroyOnLoad(this.gameObject);
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 
     public string CurrentLevel()
