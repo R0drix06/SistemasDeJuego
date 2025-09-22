@@ -33,18 +33,9 @@ public class Rocket : MonoBehaviour, IObstacle
         rb.linearVelocity = transform.up * speed;
     }
 
-    public void ResetLoop()
-    {
-        IterationManager.Instance.ResetLevel();
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            ResetLoop();
-        }
-        else if (collision.gameObject)
+        if (collision.gameObject)
         {
             Destroy(gameObject);
         }

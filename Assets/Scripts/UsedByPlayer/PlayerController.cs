@@ -3,8 +3,8 @@ using System.Runtime.InteropServices;
 using UnityEditor.SearchService;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
-{
+public class PlayerController : MonoBehaviour, IUpdatable 
+{ 
     Rigidbody2D rb2d;
     SpriteRenderer sr;
 
@@ -44,20 +44,12 @@ public class PlayerController : MonoBehaviour
     [Header("Collision")]
     private bool playerGrounded = false;
 
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        
-    }
-    
-    public void Update()
-    {
-        PlayerInput();
-
-        PlayerSpeedCap();
-
-        InputBuffer();
+        CustomUpdateManager.Instance.Register(this);
     }
 
     private void FixedUpdate()
@@ -239,6 +231,21 @@ public class PlayerController : MonoBehaviour
 
     //COLLISSIONS
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Rocket"))
+        {
+            CustomUpdateManager.Instance.Unregister(this);
+            IterationManager.Instance.ResetLevel();
+        }
+
+        if (collision.collider.CompareTag("Spikes"))
+        {
+            CustomUpdateManager.Instance.Unregister(this);
+            IterationManager.Instance.ResetLevel();
+        }
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Ground"))
@@ -249,11 +256,6 @@ public class PlayerController : MonoBehaviour
         if (collision.collider.CompareTag("Wall"))
         {
             wallJumpAvailable = true;
-        }
-
-        if (collision.collider.CompareTag("Spikes"))
-        {
-            IterationManager.Instance.ResetLevel();
         }
     }
 
@@ -268,5 +270,14 @@ public class PlayerController : MonoBehaviour
         {
             wallJumpAvailable = false;
         }
+    }
+
+    public void Tick(float deltaTime)
+    {
+        PlayerInput();
+
+        PlayerSpeedCap();
+
+        InputBuffer();
     }
 }
