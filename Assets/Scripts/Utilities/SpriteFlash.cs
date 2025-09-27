@@ -6,7 +6,7 @@ public class SpriteFlash : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
 
-    private void Awake()
+    private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }

@@ -2,7 +2,7 @@ using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Lasers : MonoBehaviour, IObstacle
+public class Lasers : MonoBehaviour, IObstacle, IUpdatable
 {
     public string id => "Laser";
 
@@ -15,15 +15,16 @@ public class Lasers : MonoBehaviour, IObstacle
     private float timer = 0;
     private float cooldown = 2;
 
-    private void Awake()
+    private void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
         boxCollider.enabled = true;
         spriteFlash = GetComponent<SpriteFlash>();
+        CustomUpdateManager.Instance.Register(this);
+        IterationManager.Instance.updatables.Add(this);
     }
 
- 
-    public void Update()
+    public void Tick(float deltaTime)
     {
         Behaviour();
     }
@@ -38,16 +39,4 @@ public class Lasers : MonoBehaviour, IObstacle
         }
     }
 
-    public void ResetLoop()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
-        {
-            if (controller.invincibility == false) IterationManager.Instance.ResetLevel();
-        } 
-    }
 }

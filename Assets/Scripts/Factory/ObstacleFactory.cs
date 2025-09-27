@@ -6,7 +6,7 @@ public class ObstacleFactory : MonoBehaviour
     [SerializeField] public GameObject[] obstacles;
     private Dictionary<string, GameObject> obstaclesDictionary;
 
-    private void Awake()
+    private void Start()
     {
         obstaclesDictionary = new Dictionary<string, GameObject>();
 

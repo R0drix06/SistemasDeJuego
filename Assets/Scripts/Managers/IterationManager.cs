@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,8 @@ public class IterationManager : MonoBehaviour
     public int level = 1;
 
     [SerializeField] private int MaxLevel;
+
+    public List<IUpdatable> updatables = new List<IUpdatable>();
 
     private void Awake()
     {
@@ -29,11 +32,14 @@ public class IterationManager : MonoBehaviour
 
     public void ResetLevel()
     {
+        Unregister();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void NextLevel()
     {
+        Unregister();
+
         if (level >= MaxLevel)
         {
             level = 1;
@@ -44,5 +50,17 @@ public class IterationManager : MonoBehaviour
         }
 
         SceneManager.LoadScene("Level" + level.ToString());
+    }
+
+    private void Unregister()
+    {
+        
+        foreach (var item in updatables)
+        {
+            CustomUpdateManager.Instance.Unregister(item);
+        }
+
+        updatables.Clear();
+        
     }
 }

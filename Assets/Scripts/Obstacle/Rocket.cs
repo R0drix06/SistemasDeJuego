@@ -1,7 +1,9 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Pool;
+using static UnityEditor.Progress;
 
-public class Rocket : MonoBehaviour, IObstacle
+public class Rocket : MonoBehaviour, IObstacle, IUpdatable
 {
     private Rigidbody2D rb;
 
@@ -11,16 +13,20 @@ public class Rocket : MonoBehaviour, IObstacle
 
     private GameObject target;
 
+    private IObjectPool <GameObject> rocketPool;
+    public IObjectPool<GameObject> RocketPool { set =>  rocketPool = value; }
+
     public string id => "Rocket";
 
-    private void Awake()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player");
-
+        CustomUpdateManager.Instance.Register(this);
+        IterationManager.Instance.updatables.Add(this);
     }
 
-    public void Update()
+    public void Tick(float deltaTime)
     {
         Behaviour();
     }
@@ -33,10 +39,16 @@ public class Rocket : MonoBehaviour, IObstacle
         rb.linearVelocity = transform.up * speed;
     }
 
+    public void Deactivate()
+    {
+        rocketPool.Release(this.gameObject);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject)
         {
+            Deactivate();
             Destroy(gameObject);
         }
     }

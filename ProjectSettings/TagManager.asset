@@ -9,6 +9,10 @@ TagManager:
   - Wall
   - Spikes
   - Rocket
+  - Laser
+  - Saw
+  - Factory
+  - Goal
   layers:
   - Default
   - TransparentFX

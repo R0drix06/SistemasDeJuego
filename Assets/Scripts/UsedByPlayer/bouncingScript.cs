@@ -1,20 +1,21 @@
 using UnityEngine;
 
-public class bouncingScript : MonoBehaviour
+public class BouncingScript : MonoBehaviour, IUpdatable
 {
     [SerializeField] private float bounceTime = 0.2f;
     private float currentTime = 0;
 
     public bool playerBouncing = false;
 
-    void Start()
+    private void Start()
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        CustomUpdateManager.Instance.Register(this);
     }
 
-    
-    public void Update()
+
+    public void Tick(float deltaTime)
     {
         currentTime += Time.deltaTime;
 
@@ -48,4 +49,6 @@ public class bouncingScript : MonoBehaviour
             playerBouncing = false;
         }
     }
+
+   
 }

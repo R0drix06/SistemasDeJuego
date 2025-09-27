@@ -1,19 +1,21 @@
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class RocketLauncher : MonoBehaviour
+public class RocketLauncher : MonoBehaviour, IUpdatable
 {
     private ObstacleFactory obstacleFactory;
 
     [SerializeField] private float maxTime;
     private float currentTime = 0;
 
-    private void Awake()
+    private void Start()
     {
-        obstacleFactory = GetComponent<ObstacleFactory>();
+        obstacleFactory = GameObject.FindGameObjectWithTag("Factory").GetComponent<ObstacleFactory>();
+        CustomUpdateManager.Instance.Register(this);
+        IterationManager.Instance.updatables.Add(this);
     }
 
-    public void Update()
+    public void Tick(float deltaTime)
     {
         currentTime += Time.deltaTime;
 

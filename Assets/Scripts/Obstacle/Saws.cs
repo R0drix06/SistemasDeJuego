@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Saws : MonoBehaviour, IObstacle
+public class Saws : MonoBehaviour, IObstacle, IUpdatable
 {
     public string id => "Saw";
 
@@ -19,13 +19,15 @@ public class Saws : MonoBehaviour, IObstacle
     private bool infoFront;
     private bool infoDown;
 
-    private void Awake()
+    private void Start()
     {
         rb= GetComponent<Rigidbody2D>();
+        CustomUpdateManager.Instance.Register(this);
+        IterationManager.Instance.updatables.Add(this);
 
     }
 
-    public void Update()
+    public void Tick(float deltaTime)
     {
         Behaviour();
     }
@@ -44,19 +46,6 @@ public class Saws : MonoBehaviour, IObstacle
         if (!infoDown)
         {
             transform.Rotate(0f, 0f, -90f);
-        }
-    }
-
-    public void ResetLoop()
-    {
-        IterationManager.Instance.ResetLevel();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.gameObject.CompareTag("Player"))
-        {
-            ResetLoop();
         }
     }
 

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4156265737941231030
+--- !u!1 &8778644925356107131
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6188263070439223701}
-  - component: {fileID: 4641472319381335546}
+  - component: {fileID: 1388440995089097258}
+  - component: {fileID: 6230057980604887601}
   m_Layer: 0
-  m_Name: RocketLauncher
-  m_TagString: Untagged
+  m_Name: Factory
+  m_TagString: Factory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6188263070439223701
+--- !u!4 &1388440995089097258
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4156265737941231030}
+  m_GameObject: {fileID: 8778644925356107131}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.423127, y: 7.918482, z: -0.06514103}
+  m_LocalPosition: {x: -8.607042, y: 0.56002915, z: -0.11105364}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4641472319381335546
+--- !u!114 &6230057980604887601
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4156265737941231030}
+  m_GameObject: {fileID: 8778644925356107131}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8013d449043c8240977026fde78142a, type: 3}
+  m_Script: {fileID: 11500000, guid: dda692b7f79dc484c927d9ebe6641a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 0
+  obstacles:
+  - {fileID: 3536834861205400942, guid: e753c4e298d8fe244bac705c326fb66e, type: 3}
+  - {fileID: 2865975966477911773, guid: 304200b63d4705a428dda7594e3d0283, type: 3}

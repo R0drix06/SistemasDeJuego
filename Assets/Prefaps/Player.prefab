@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 9049098145970017905}
   - component: {fileID: 3599525704386316693}
   - component: {fileID: 4777345226595229642}
+  - component: {fileID: 9196086542395481257}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -365,4 +366,16 @@ MonoBehaviour:
   turningSpeed: 3
   walkingFriction: 0.8
   invincibilityDuration: 0.2
-  invincibility: 0
+--- !u!114 &9196086542395481257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2478464891736345982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 032dd472f00faaa46afae975ea7be86e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bouncingScript: {fileID: 2282397173151118477}

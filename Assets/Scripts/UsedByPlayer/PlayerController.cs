@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
     private float currentMaxSpeed = 25f;
 
     [Header("Jump")]
-    [SerializeField] private bouncingScript bouncer;
+    [SerializeField] private BouncingScript bouncer;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float wallJumpForce = 20f;
     [SerializeField] private float coyoteTime = 0.1f;
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
     private bool jumpBuffered = false;
 
     private bool wallJumpAvailable = false;
+    public bool WallJumpAvailable { get { return wallJumpAvailable; } set { wallJumpAvailable = value; } }
 
     [Header("Dash")]
     [SerializeField] private float dashForce = 30f;
@@ -39,10 +40,14 @@ public class PlayerController : MonoBehaviour, IUpdatable
 
     [Header("Invincibility")]
     [SerializeField] private float invincibilityDuration;
-    public bool invincibility = false;
+
+    private bool invincibility = false;
+    public bool Inivincibility { get { return invincibility; } }
+
 
     [Header("Collision")]
     private bool playerGrounded = false;
+    public bool PlayerGrounded { get { return playerGrounded; } set { playerGrounded = value; } }
 
 
     void Start()
@@ -50,6 +55,15 @@ public class PlayerController : MonoBehaviour, IUpdatable
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         CustomUpdateManager.Instance.Register(this);
+    }
+
+    public void Tick(float deltaTime)
+    {
+        PlayerInput();
+
+        PlayerSpeedCap();
+
+        InputBuffer();
     }
 
     private void FixedUpdate()
@@ -272,12 +286,5 @@ public class PlayerController : MonoBehaviour, IUpdatable
         }
     }
 
-    public void Tick(float deltaTime)
-    {
-        PlayerInput();
-
-        PlayerSpeedCap();
-
-        InputBuffer();
-    }
+   
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CyclicLaser : MonoBehaviour ,IObstacle
+public class CyclicLaser : MonoBehaviour ,IObstacle, IUpdatable
 {
     public string id => "CyclicLaser";
 
@@ -16,14 +16,15 @@ public class CyclicLaser : MonoBehaviour ,IObstacle
 
     private BoxCollider2D boxCollider;
 
-    private void Awake()
+    private void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
+        CustomUpdateManager.Instance.Register(this);
 
     }
-  
-    public void Update()
+
+    public void Tick(float deltaTime)
     {
         Behaviour();
     }
@@ -53,18 +54,4 @@ public class CyclicLaser : MonoBehaviour ,IObstacle
             }
         }
     }
-
-    public void ResetLoop()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController controller))
-        {
-            if (controller.invincibility == false) IterationManager.Instance.ResetLevel();
-        }
-    }
-
 }
