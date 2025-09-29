@@ -22,7 +22,7 @@ public class Rocket : MonoBehaviour, IObstacle, IUpdatable
     {
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player");
-        CustomUpdateManager.Instance.Register(this); //Raro (linea 39, RocketPool)
+        CustomUpdateManager.Instance.Register(this);
         IterationManager.Instance.updatables.Add(this);
     }
 

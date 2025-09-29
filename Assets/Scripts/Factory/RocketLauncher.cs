@@ -10,8 +10,8 @@ public class RocketLauncher : MonoBehaviour, IUpdatable
     [SerializeField] private float maxTime;
     private float currentTime = 0;
 
-    [SerializeField] private int defaultCapacity = 6;
-    [SerializeField] private int maxCapacity = 100;
+    [SerializeField] private int defaultCapacity;
+    [SerializeField] private int maxCapacity;
 
     private void Start()
     {

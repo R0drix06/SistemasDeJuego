@@ -10,15 +10,14 @@ public class RocketPool : MonoBehaviour
     [SerializeField] private bool collectionCheck = true;
 
     private int defaultCapacity;
-    private int maxCapacity;
+    private int maxCapacity = 1; //For evading MaxSizeError
 
     public int DefaultCapacity { set => defaultCapacity = value; }
     public int MaxCapacity { set => maxCapacity = value; }
 
-    private void Awake()
+    private void Start()
     {
         rocketPool = new ObjectPool<GameObject>(CreateProjectile, OnGetFromPool, OnReleaseToPool, OnDestroyPoolObject, collectionCheck, defaultCapacity, maxCapacity);
-    
     }
 
     private GameObject CreateProjectile() //Functions as internal Awake()
