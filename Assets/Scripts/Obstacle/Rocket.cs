@@ -22,7 +22,7 @@ public class Rocket : MonoBehaviour, IObstacle, IUpdatable
     {
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player");
-        CustomUpdateManager.Instance.Register(this);
+        CustomUpdateManager.Instance.Register(this); //Raro (linea 39, RocketPool)
         IterationManager.Instance.updatables.Add(this);
     }
 
@@ -41,7 +41,15 @@ public class Rocket : MonoBehaviour, IObstacle, IUpdatable
 
     public void Deactivate()
     {
+        rb.linearVelocity = new Vector2 (0, 0);
+        rb.angularVelocity = 0;
         rocketPool.Release(this.gameObject);
+    }
+
+    public void OnDestroyCall()
+    {
+        CustomUpdateManager.Instance.Unregister(this);
+        IterationManager.Instance.updatables.Remove(this);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -49,7 +57,6 @@ public class Rocket : MonoBehaviour, IObstacle, IUpdatable
         if (collision.gameObject)
         {
             Deactivate();
-            Destroy(gameObject);
         }
     }
 

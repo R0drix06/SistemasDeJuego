@@ -3,14 +3,23 @@ using UnityEngine;
 
 public class RocketLauncher : MonoBehaviour, IUpdatable
 {
-    private ObstacleFactory obstacleFactory;
+    //private ObstacleFactory obstacleFactory;
+
+    private RocketPool rocketPool;
 
     [SerializeField] private float maxTime;
     private float currentTime = 0;
 
+    [SerializeField] private int defaultCapacity = 6;
+    [SerializeField] private int maxCapacity = 100;
+
     private void Start()
     {
-        obstacleFactory = GameObject.FindGameObjectWithTag("Factory").GetComponent<ObstacleFactory>();
+        //obstacleFactory = GameObject.FindGameObjectWithTag("Factory").GetComponent<ObstacleFactory>();
+
+        rocketPool = GetComponent<RocketPool>();
+        rocketPool.DefaultCapacity = defaultCapacity;
+        rocketPool.MaxCapacity = maxCapacity;
         CustomUpdateManager.Instance.Register(this);
         IterationManager.Instance.updatables.Add(this);
     }
@@ -21,7 +30,9 @@ public class RocketLauncher : MonoBehaviour, IUpdatable
 
         if (currentTime > maxTime)
         {
-            obstacleFactory.Create(obstacleFactory.obstacles[0].GetComponent<IObstacle>().id, transform.position, transform.rotation);
+            //obstacleFactory.Create(obstacleFactory.obstacles[0].GetComponent<IObstacle>().id, transform.position, transform.rotation);
+
+            rocketPool.ShotObject(transform.position, transform.rotation);
             currentTime = 0;
         }
     }
