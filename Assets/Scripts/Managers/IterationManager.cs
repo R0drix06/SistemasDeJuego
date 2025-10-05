@@ -52,6 +52,21 @@ public class IterationManager : MonoBehaviour
         SceneManager.LoadScene("Level" + level.ToString());
     }
 
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene("Level1");
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     private void Unregister()
     {
         

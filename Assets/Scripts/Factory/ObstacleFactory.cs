@@ -16,7 +16,7 @@ public class ObstacleFactory : MonoBehaviour
         }
     }
 
-    public GameObject Create(string name, Vector2 position, Quaternion rotation)
+    public GameObject Create(string name)
     {
         if (!obstaclesDictionary.TryGetValue(name, out GameObject obstacle))
         {
@@ -24,6 +24,6 @@ public class ObstacleFactory : MonoBehaviour
             return null;
         }
         
-        return Instantiate(obstacle, position, rotation);
+        return Instantiate(obstacle);
     }
 }

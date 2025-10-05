@@ -17,7 +17,7 @@ public class RocketLauncher : MonoBehaviour, IUpdatable
     {
         //obstacleFactory = GameObject.FindGameObjectWithTag("Factory").GetComponent<ObstacleFactory>();
 
-        rocketPool = GetComponent<RocketPool>();
+        rocketPool = GameObject.FindGameObjectWithTag("Factory").GetComponent<RocketPool>();
         rocketPool.DefaultCapacity = defaultCapacity;
         rocketPool.MaxCapacity = maxCapacity;
         CustomUpdateManager.Instance.Register(this);
