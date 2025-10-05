@@ -7,8 +7,11 @@ public class BouncingScript : MonoBehaviour, IUpdatable
 
     public bool playerBouncing = false;
 
+    private PlayerController playerController;
+
     private void Start()
     {
+        playerController = GetComponentInParent<PlayerController>();
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
         CustomUpdateManager.Instance.Register(this);
@@ -27,9 +30,13 @@ public class BouncingScript : MonoBehaviour, IUpdatable
 
         if (Input.GetKeyDown(KeyCode.X)) //Activo el sprite renderer y collider, reseteo el timer.
         {
-            gameObject.GetComponent<SpriteRenderer>().enabled = true;
-            gameObject.GetComponent<BoxCollider2D>().enabled = true;
-            currentTime = 0;
+            if (!playerController.PlayerGrounded)
+            {
+                gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                currentTime = 0;
+            }
+            
         }
     }
 

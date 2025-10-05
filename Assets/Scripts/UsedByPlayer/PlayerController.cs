@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
     [SerializeField] private float bufferTime = 1f;
     private float currentCoyoteTime = 0;
     private float currentBufferTime = 0;
-    private bool jumpBuffered = false;
+    public bool jumpBuffered = false;
 
     private bool wallJumpAvailable = false;
     public bool WallJumpAvailable { get { return wallJumpAvailable; } set { wallJumpAvailable = value; } }
