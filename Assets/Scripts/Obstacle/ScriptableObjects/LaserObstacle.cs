@@ -9,6 +9,9 @@ public abstract class LaserObstacle : ScriptableObject
     [SerializeField] protected float timer;
     [SerializeField] protected float cooldown = 2;
 
+    public BoxCollider2D boxCollider;
+    public SpriteRenderer sprite;
+
     public abstract void Behaviour();
 
 }

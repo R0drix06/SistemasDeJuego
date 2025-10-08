@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTime: 1
-  defaultCapacity: 0
-  maxCapacity: 0
+  defaultCapacity: 10
+  maxCapacity: 100
