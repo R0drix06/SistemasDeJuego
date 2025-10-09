@@ -47,7 +47,7 @@ public class RocketPool : MonoBehaviour
         Destroy(poolObject.gameObject);
     }
 
-    public void ShotObject(Vector2 transform, Quaternion rotation)
+    public void ShootObject(Vector2 transform, Quaternion rotation)
     {
         GameObject rocket = rocketPool.Get();
 

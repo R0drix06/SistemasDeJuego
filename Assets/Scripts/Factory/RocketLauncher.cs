@@ -32,7 +32,7 @@ public class RocketLauncher : MonoBehaviour, IUpdatable
         {
             //obstacleFactory.Create(obstacleFactory.obstacles[0].GetComponent<IObstacle>().id, transform.position, transform.rotation);
 
-            rocketPool.ShotObject(transform.position, transform.rotation);
+            rocketPool.ShootObject(transform.position, transform.rotation);
             currentTime = 0;
         }
     }
