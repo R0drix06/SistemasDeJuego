@@ -161,6 +161,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
     {
         if (moveDirection > 0)
         {
+            sr.flipX = false;
             if (rb2d.linearVelocityX < 0) //Si el jugador viene con inercia aplica más fricción.
             {
                 rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x + movementSpeed * turningSpeed, rb2d.linearVelocity.y);
@@ -172,6 +173,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
         }
         else if (moveDirection < 0)
         {
+            sr.flipX = true;
             if (rb2d.linearVelocityX > 0) //Si el jugador viene con inercia aplica más fricción.
             {
                 rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x - movementSpeed * turningSpeed, rb2d.linearVelocity.y);
