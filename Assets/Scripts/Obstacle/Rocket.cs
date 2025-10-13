@@ -7,8 +7,8 @@ public class Rocket : MonoBehaviour, IObstacle, IUpdatable
 {
     private Rigidbody2D rb;
 
-    private float speed = 10f;
-    private float rotationSpeed = 100f;
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private float rotationSpeed = 100f;
     private float rotateAmount;
 
     private GameObject target;
