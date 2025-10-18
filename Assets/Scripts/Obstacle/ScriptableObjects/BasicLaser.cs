@@ -4,36 +4,69 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Laser", menuName = "Laser/BasicLaser")]
 internal class BasicLaser : LaserObstacle
 {
+    private float currentMoveX = 0;
+    private float currentMoveY = 0;
+    private bool moveUp = true;
+    private bool moveRight = true;
+
+    public Transform transform;
+    [SerializeField] private float DistanceX;
+    [SerializeField] private float DistanceY;
+    [SerializeField] private bool canMoveInX;
+    [SerializeField] private bool canMoveInY;
 
     public override void Behaviour()
     {
-        timer += Time.deltaTime;
-        if (timer > cooldown)
+        if (canMoveInX)
         {
-            Flash(2, startColor, endColor, 1);
-            timer = 0;
-        }
-    }
-
-    private void Flash(float flashDuration, Color startColor, Color flashColor, int flashesAmount)
-    {
-
-        float elapsedFlashTime = 0;
-        float elapsedFlashPercentage = 0;
-
-        while (elapsedFlashTime < flashDuration)
-        {
-            elapsedFlashTime += Time.deltaTime;
-            elapsedFlashPercentage = elapsedFlashTime / flashDuration;
-
-            if (elapsedFlashPercentage > 1)
+            if (currentMoveX < DistanceX && moveUp)
             {
-                elapsedFlashPercentage = 1;
+                currentMoveX += Time.deltaTime;
+                transform.Translate(Vector3.right);
+
+                if (currentMoveX > DistanceX)
+                {
+                    moveUp = false;
+                }
+            }
+            else if (currentMoveX > 0 && !moveUp)
+            {
+                currentMoveX -= Time.deltaTime;
+                transform.Translate(Vector3.left);
+
+                if (currentMoveX < 0)
+                {
+                    moveUp = true;
+                }
             }
 
-            float pingPongPercentage = Mathf.PingPong(elapsedFlashPercentage * 2 * flashesAmount, 1);
-            sprite.color = Color.LerpUnclamped(startColor, flashColor, pingPongPercentage);
+            Debug.Log(currentMoveX);
+        }
+        if (canMoveInY)
+        {
+            if (currentMoveX < DistanceY && moveRight)
+            {
+                currentMoveY += Time.deltaTime;
+                transform.Translate(Vector3.up);
 
+                if(currentMoveY > DistanceY)
+                {
+                    moveRight = false;
+                }
+            }
+            else if (currentMoveX > 0 && !moveRight)
+            {
+                currentMoveY -= Time.deltaTime;
+                transform.Translate(Vector3.down);
+
+                if (currentMoveY < 0)
+                {
+                    moveRight = true;
+                }
+            }
+
+            Debug.Log(currentMoveY);
         }
     }
+
 }

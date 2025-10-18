@@ -18,3 +18,8 @@ MonoBehaviour:
   cooldown: 2
   boxCollider: {fileID: 0}
   sprite: {fileID: 0}
+  transform: {fileID: 0}
+  DistanceX: 10
+  DistanceY: 10
+  canMoveInX: 1
+  canMoveInY: 1
