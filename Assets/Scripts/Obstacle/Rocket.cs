@@ -9,7 +9,6 @@ public class Rocket : MonoBehaviour, IObstacle, IUpdatable
 
     [SerializeField] private float speed = 10f;
     [SerializeField] private float rotationSpeed = 100f;
-    private float rotateAmount;
 
     private GameObject target;
 
@@ -43,7 +42,7 @@ public class Rocket : MonoBehaviour, IObstacle, IUpdatable
     {
         rb.linearVelocity = new Vector2 (0, 0);
         rb.angularVelocity = 0;
-        rocketPool.Release(this.gameObject);
+        rocketPool.Release(gameObject);
     }
 
     public void OnDestroyCall()

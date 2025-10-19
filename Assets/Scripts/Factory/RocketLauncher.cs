@@ -1,10 +1,7 @@
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class RocketLauncher : MonoBehaviour, IUpdatable
 {
-    //private ObstacleFactory obstacleFactory;
-
     private RocketPool rocketPool;
 
     [SerializeField] private float maxTime;
@@ -15,8 +12,6 @@ public class RocketLauncher : MonoBehaviour, IUpdatable
 
     private void Start()
     {
-        //obstacleFactory = GameObject.FindGameObjectWithTag("Factory").GetComponent<ObstacleFactory>();
-
         rocketPool = GameObject.FindGameObjectWithTag("Factory").GetComponent<RocketPool>();
         rocketPool.DefaultCapacity = defaultCapacity;
         rocketPool.MaxCapacity = maxCapacity;
@@ -30,8 +25,6 @@ public class RocketLauncher : MonoBehaviour, IUpdatable
 
         if (currentTime > maxTime)
         {
-            //obstacleFactory.Create(obstacleFactory.obstacles[0].GetComponent<IObstacle>().id, transform.position, transform.rotation);
-
             rocketPool.ShootObject(transform.position, transform.rotation);
             currentTime = 0;
         }

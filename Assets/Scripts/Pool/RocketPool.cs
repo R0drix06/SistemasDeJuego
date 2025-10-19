@@ -3,7 +3,7 @@ using UnityEngine.Pool;
 
 public class RocketPool : MonoBehaviour
 {
-    private AbstractFactory factory;
+    private ObstacleFactory factory;
 
     [SerializeField] private GameObject rocket;
 
@@ -19,13 +19,13 @@ public class RocketPool : MonoBehaviour
 
     private void Start()
     {
-        factory = GetComponent<AbstractFactory>();
+        factory = GetComponent<ObstacleFactory>();
         rocketPool = new ObjectPool<GameObject>(CreateProjectile, OnGetFromPool, OnReleaseToPool, OnDestroyPoolObject, collectionCheck, defaultCapacity, maxCapacity);
     }
 
     private GameObject CreateProjectile() //Functions as internal Awake()
     {
-        GameObject projectile = factory.CallObstacleFactory(rocket.GetComponent<Rocket>().id);
+        GameObject projectile = factory.Create(rocket.GetComponent<Rocket>().id);
         projectile.GetComponent<Rocket>().RocketPool = rocketPool;
         return projectile;
     }

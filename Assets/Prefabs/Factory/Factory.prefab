@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1388440995089097258}
   - component: {fileID: 6230057980604887601}
   - component: {fileID: 6881602087042679352}
-  - component: {fileID: 873589670253001003}
   m_Layer: 0
   m_Name: Factory
   m_TagString: Factory
@@ -62,15 +61,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rocket: {fileID: 2865975966477911773, guid: 304200b63d4705a428dda7594e3d0283, type: 3}
   collectionCheck: 1
---- !u!114 &873589670253001003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8778644925356107131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 499088b0e34288f4497815e8c3b4a7db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
