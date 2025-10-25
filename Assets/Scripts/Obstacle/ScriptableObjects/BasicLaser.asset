@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c323296a5472f8b4880307274b938074, type: 3}
-  m_Name: Cyclic Laser
+  m_Script: {fileID: 11500000, guid: 1cc35ad7ca0b2544a82a811bf9f780a5, type: 3}
+  m_Name: BasicLaser
   m_EditorClassIdentifier: 
-  startColor: {r: 1, g: 0, b: 0, a: 1}
-  endColor: {r: 0, g: 0.16050863, b: 1, a: 1}
-  timer: 1.6452764
+  startColor: {r: 1, g: 0.096226394, b: 0.096226394, a: 1}
+  flashColor: {r: 1, g: 0.4660377, b: 0.4660377, a: 1}
   cooldown: 2
-  boxCollider: {fileID: 0}
-  sprite: {fileID: 0}
+  canMove: 0
+  moveSpeed: 5
+  moveCooldown: 2

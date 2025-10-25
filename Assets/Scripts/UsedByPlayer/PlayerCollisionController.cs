@@ -61,21 +61,15 @@ public class PlayerCollisionController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Laser"))
+        if (collision.gameObject.CompareTag("Laser") && playerController.Inivincibility == false)
         {
-            if (playerController.Inivincibility == false)
-            {
-                Unregister();
-                IterationManager.Instance.ResetLevel();
-            }
+            Unregister();
+            IterationManager.Instance.ResetLevel();
         }
         if (collision.gameObject.CompareTag("Saw"))
         {
-            if (playerController.Inivincibility == false)
-            {
-                Unregister();
-                IterationManager.Instance.ResetLevel();
-            }
+            Unregister();
+            IterationManager.Instance.ResetLevel();
         }
 
         if (collision.gameObject.CompareTag("Goal"))
