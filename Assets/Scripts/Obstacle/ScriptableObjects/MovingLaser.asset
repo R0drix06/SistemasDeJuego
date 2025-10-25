@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cc35ad7ca0b2544a82a811bf9f780a5, type: 3}
   m_Name: MovingLaser
   m_EditorClassIdentifier: 
-  startColor: {r: 1, g: 0.096226394, b: 0.096226394, a: 1}
-  flashColor: {r: 1, g: 0.4660377, b: 0.4660377, a: 1}
+  startColor: {r: 1, g: 0.25769114, b: 0.013207495, a: 1}
+  flashColor: {r: 1, g: 0.554589, b: 0.2999999, a: 1}
   cooldown: 2
-  canMove: 0
+  canMove: 1
   moveSpeed: 5
   moveCooldown: 2
