@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startColor: {r: 1, g: 0.25769114, b: 0.013207495, a: 1}
   flashColor: {r: 1, g: 0.554589, b: 0.2999999, a: 1}
-  cooldown: 2
+  cooldown: 1
   canMove: 1
   moveSpeed: 5
   moveCooldown: 2

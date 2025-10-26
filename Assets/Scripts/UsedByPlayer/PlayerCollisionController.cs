@@ -75,6 +75,12 @@ public class PlayerCollisionController : MonoBehaviour
         if (collision.gameObject.CompareTag("Goal"))
         {
             Unregister();
+            IterationManager.Instance.NextLoop();
+        }
+
+        if (collision.gameObject.CompareTag("LevelGoal"))
+        {
+            Unregister();
             IterationManager.Instance.NextLevel();
         }
     }

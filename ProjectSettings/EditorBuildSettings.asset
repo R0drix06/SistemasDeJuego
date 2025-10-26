@@ -12,11 +12,29 @@ EditorBuildSettings:
     path: Assets/Scenes/TestLevel1.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
-    guid: 1fb4dc27a97c90048920e67e9dceb4bb
-  - enabled: 1
     path: Assets/Scenes/TestScenes/ObstacleTestScene.unity
     guid: f06da22250d075a489e7cd94bffe412a
+  - enabled: 1
+    path: Assets/Scenes/Level 1/L1_Loop1.unity
+    guid: fcd087c992fdd3f468ea9f7fe8578e6e
+  - enabled: 1
+    path: Assets/Scenes/Level 1/L1_Loop2.unity
+    guid: 826026e574afc9444819b9e16a33ad60
+  - enabled: 1
+    path: Assets/Scenes/Level 1/L1_Loop3.unity
+    guid: 2f345ce0e0655d64ba99d1d67b531f95
+  - enabled: 1
+    path: Assets/Scenes/Level 1/L1_Loop4.unity
+    guid: f939ee9c78a976345b1073e5215143f9
+  - enabled: 1
+    path: Assets/Scenes/Level 2/L2_Loop1.unity
+    guid: 115a80459e8c2014690ffac23b3d854b
+  - enabled: 1
+    path: Assets/Scenes/Level 2/L2_Loop2.unity
+    guid: b166c9beca4f85f418f9dff7ed4083aa
+  - enabled: 1
+    path: Assets/Scenes/Level 2/L2_Loop3.unity
+    guid: 413b012798c399b4b847dc61203982e5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

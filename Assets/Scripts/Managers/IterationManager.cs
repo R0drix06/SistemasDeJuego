@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 public class IterationManager : MonoBehaviour
 {
     public static IterationManager Instance;
-    public int level = 1;
+    public int currentLevel = 1;
+    public int currentLoop = 1;
 
-    [SerializeField] private int MaxLevel;
+    private int MaxLevel = 4;
 
     public List<IUpdatable> updatables = new List<IUpdatable>();
 
@@ -27,7 +28,7 @@ public class IterationManager : MonoBehaviour
 
     public string CurrentLevel()
     {
-        return "Level" + level.ToString();
+        return "Level" + currentLevel.ToString();
     }
 
     public void ResetLevel()
@@ -40,16 +41,27 @@ public class IterationManager : MonoBehaviour
     {
         Unregister();
 
-        if (level >= MaxLevel)
+        if (currentLevel > MaxLevel)
         {
-            level = 1;
+            currentLevel = 1;
+            currentLoop = 1;
         }
         else
         {
-            level++;
+            currentLevel++;
+            currentLoop = 1;
         }
 
-        SceneManager.LoadScene("Level" + level.ToString());
+        SceneManager.LoadScene("L" + currentLevel.ToString() + "_Loop" + currentLoop.ToString());
+    }
+
+    public void NextLoop()
+    {
+        Unregister();
+
+        currentLoop ++;
+
+        SceneManager.LoadScene("L" + currentLevel.ToString() + "_Loop" + currentLoop.ToString());
     }
 
     public void LoadLevel()

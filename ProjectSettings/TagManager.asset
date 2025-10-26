@@ -13,6 +13,7 @@ TagManager:
   - Saw
   - Factory
   - Goal
+  - LevelGoal
   layers:
   - Default
   - TransparentFX
