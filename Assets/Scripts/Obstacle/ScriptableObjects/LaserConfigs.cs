@@ -40,7 +40,6 @@ public class LaserConfigs : MonoBehaviour, IUpdatable
         cooldown = laser.cooldown;
         spriteRenderer.color = startColor;
         
-
         canMove = laser.canMove;
         moveSpeed = laser.moveSpeed;
         moveCooldown = laser.moveCooldown;

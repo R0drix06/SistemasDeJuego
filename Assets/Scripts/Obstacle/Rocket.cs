@@ -5,11 +5,9 @@ public class Rocket : MonoBehaviour, IObstacle, IUpdatable
 {
     private Rigidbody2D rb;
 
-
     private RocketInitState initState;
     private RocketMiddleState middleState;
     private RocketFinalState finalState;
-
 
     private float speed;
     public float Speed { set => speed = value; }
