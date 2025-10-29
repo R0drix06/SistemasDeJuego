@@ -53,6 +53,7 @@ public class Rocket : MonoBehaviour, IObstacle, IUpdatable
 
     private void BuildUpMethod()
     {
+        
         buildUpCounter += Time.deltaTime;
         
         if (buildUpCounter >= buildUpSpeed)

@@ -1,6 +1,6 @@
 ﻿public class RocketInitState : IRocketStates
 {
-    private float speed => 10f;
+    private float speed => 7f;
     private float rotationSpeed => 100f;
 
     public void ChangeRocketState(Rocket rocket)

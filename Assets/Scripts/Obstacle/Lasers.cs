@@ -1,6 +1,4 @@
-using UnityEditor.ShaderGraph;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Lasers : MonoBehaviour, IObstacle, IUpdatable
 {

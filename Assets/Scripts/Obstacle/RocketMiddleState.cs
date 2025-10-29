@@ -1,9 +1,6 @@
-﻿
-using UnityEditor.Rendering;
-
-public class RocketMiddleState : IRocketStates
+﻿public class RocketMiddleState : IRocketStates
 {
-    private float speed = 20f;
+    private float speed = 15f;
     private float rotationSpeed = 100f;
     public void ChangeRocketState(Rocket rocket)
     {

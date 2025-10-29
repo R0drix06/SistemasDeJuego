@@ -1,26 +1,48 @@
 using System.Collections;
-using System.Runtime.InteropServices;
-using UnityEditor.SearchService;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IUpdatable 
-{ 
-    Rigidbody2D rb2d;
-    SpriteRenderer sr;
+{
+    #region Commands
+    ICommand moveRight;
+    ICommand moveLeft;
+    ICommand moveDash;
+
+    #endregion
+
+    public Rigidbody2D rb2d;
+    public SpriteRenderer sr;
 
     private float moveDirection;
     
     [Header("Movement Speed")]
-    [SerializeField] private float baseMaxSpeed = 25f;
-    [SerializeField] private float movementSpeed = 20f;
-    private float currentMaxSpeed = 25f;
+    [SerializeField] private float baseMaxSpeed;
+    [SerializeField] private float movementSpeed;
+    private float currentMaxSpeed;
+    
+    public float MovementSpeed => movementSpeed;
+
+    [Header("Dash")]
+    [SerializeField] private float dashForce;
+    [SerializeField] private float dashMaxTime;
+    private float currentDashTime = 0;
+    private bool dashActive = false;
+
+    public float DashForce => dashForce;
+
+    [Header("Friction")]
+    [SerializeField] private float turningSpeed;
+    [SerializeField] private float walkingFriction;
+
+    public float TurningSpeed => turningSpeed;
+    public float WalkingFriction => walkingFriction;
 
     [Header("Jump")]
     [SerializeField] private BouncingScript bouncer;
-    [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private float wallJumpForce = 20f;
-    [SerializeField] private float coyoteTime = 0.1f;
-    [SerializeField] private float bufferTime = 1f;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float wallJumpForce;
+    [SerializeField] private float coyoteTime;
+    [SerializeField] private float bufferTime;
     private float currentCoyoteTime = 0;
     private float currentBufferTime = 0;
     public bool jumpBuffered = false;
@@ -28,15 +50,6 @@ public class PlayerController : MonoBehaviour, IUpdatable
     private bool wallJumpAvailable = false;
     public bool WallJumpAvailable { get { return wallJumpAvailable; } set { wallJumpAvailable = value; } }
 
-    [Header("Dash")]
-    [SerializeField] private float dashForce = 30f;
-    [SerializeField] private float dashMaxTime = 0.2f;
-    private float currentDashTime = 0;
-    private bool dashActive = false;
-    
-    [Header("Friction")]
-    [SerializeField] private float turningSpeed = 3f;
-    [SerializeField] private float walkingFriction = 0.9f;
 
     [Header("Invincibility")]
     [SerializeField] private float invincibilityDuration;
@@ -49,11 +62,15 @@ public class PlayerController : MonoBehaviour, IUpdatable
     private bool playerGrounded = false;
     public bool PlayerGrounded { get { return playerGrounded; } set { playerGrounded = value; } }
 
+    
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        moveRight = new MoveRightCommand(this);
+        moveLeft = new MoveLeftCommand(this);
+        moveDash = new DashCommand(this);
         CustomUpdateManager.Instance.Register(this);
     }
 
@@ -135,14 +152,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
             currentDashTime += Time.deltaTime;
             currentMaxSpeed = dashForce; //Aumenta la velocidad máxima.
 
-            if (sr.flipX) //Aplica una fuerza horizontal dependiendo de la dirección del jugador.
-            {
-                rb2d.linearVelocity = new Vector2(-dashForce, 0);
-            }
-            else
-            {
-                rb2d.linearVelocity = new Vector2(dashForce, 0);
-            }
+            moveDash.Execute();
 
         }
         else
@@ -161,27 +171,11 @@ public class PlayerController : MonoBehaviour, IUpdatable
     {
         if (moveDirection > 0)
         {
-            sr.flipX = false;
-            if (rb2d.linearVelocityX < 0) //Si el jugador viene con inercia aplica más fricción.
-            {
-                rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x + movementSpeed * turningSpeed, rb2d.linearVelocity.y);
-            }
-            else //El jugador avanza
-            {
-                rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x + movementSpeed, rb2d.linearVelocity.y);
-            }
+            moveRight.Execute();
         }
         else if (moveDirection < 0)
         {
-            sr.flipX = true;
-            if (rb2d.linearVelocityX > 0) //Si el jugador viene con inercia aplica más fricción.
-            {
-                rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x - movementSpeed * turningSpeed, rb2d.linearVelocity.y);
-            }
-            else //El jugador avanza
-            {
-                rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x - movementSpeed, rb2d.linearVelocity.y);
-            }
+            moveLeft.Execute();
         }
         else //Si el jugador no se mueve el personaje desacelera lentamente.
         {
@@ -216,7 +210,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
         // Input Buffer
         if (currentBufferTime > 0)
         {
-            currentBufferTime -= Time.deltaTime; 
+            currentBufferTime -= Time.deltaTime;
         }
         else
         {
@@ -237,56 +231,11 @@ public class PlayerController : MonoBehaviour, IUpdatable
             }
         }
     }
-
     private IEnumerator StartInvincibility()
     {
         invincibility = true;
         yield return new WaitForSeconds(invincibilityDuration);
         invincibility = false;
     }
-
-    //COLLISSIONS
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Rocket"))
-        {
-            CustomUpdateManager.Instance.Unregister(this);
-            IterationManager.Instance.ResetLevel();
-        }
-
-        if (collision.collider.CompareTag("Spikes"))
-        {
-            CustomUpdateManager.Instance.Unregister(this);
-            IterationManager.Instance.ResetLevel();
-        }
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Ground"))
-        {
-            playerGrounded = true;
-        }
-
-        if (collision.collider.CompareTag("Wall"))
-        {
-            wallJumpAvailable = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Ground"))
-        {
-            playerGrounded = false;
-        }
-
-        if (collision.collider.CompareTag("Wall"))
-        {
-            wallJumpAvailable = false;
-        }
-    }
-
    
 }
