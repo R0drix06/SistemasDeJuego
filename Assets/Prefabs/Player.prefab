@@ -354,17 +354,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eff18849492f484eafe27e442927be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb2d: {fileID: 9049098145970017905}
+  sr: {fileID: 5694190424195117990}
   baseMaxSpeed: 15
   movementSpeed: 2
+  dashForce: 75
+  dashMaxTime: 0.05
+  turningSpeed: 3
+  walkingFriction: 0.8
   bouncer: {fileID: 2282397173151118477}
   jumpForce: 20
   wallJumpForce: 20
   coyoteTime: 0.075
   bufferTime: 0.15
-  dashForce: 75
-  dashMaxTime: 0.05
-  turningSpeed: 3
-  walkingFriction: 0.8
+  jumpBuffered: 0
   invincibilityDuration: 0.2
 --- !u!114 &9196086542395481257
 MonoBehaviour:

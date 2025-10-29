@@ -75,13 +75,12 @@ public class PlayerController : MonoBehaviour, IUpdatable
     
 
     void Start()
-    {
-        rb2d = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
+    { 
         moveRight = new MoveRightCommand(this);
         moveLeft = new MoveLeftCommand(this);
         moveDash = new DashCommand(this);
         moveJump = new JumpCommand(this);
+        moveWallJump = new WallJumpCommand(this);
         CustomUpdateManager.Instance.Register(this);
     }
 
@@ -221,7 +220,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
             }
             else if (wallJumpAvailable)
             {
-                
+                moveWallJump.Execute();
                 jumpBuffered = false;
             }
         }
