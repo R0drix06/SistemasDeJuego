@@ -2,7 +2,7 @@
 
 public class DashCommand : ICommand
 {
-    PlayerController player;
+    private PlayerController player;
     public DashCommand(PlayerController playerController)
     {
         player = playerController;

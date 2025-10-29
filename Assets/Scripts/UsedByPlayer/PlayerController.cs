@@ -7,36 +7,44 @@ public class PlayerController : MonoBehaviour, IUpdatable
     ICommand moveRight;
     ICommand moveLeft;
     ICommand moveDash;
+    ICommand moveJump;
+    ICommand moveWallJump;
 
     #endregion
 
     public Rigidbody2D rb2d;
     public SpriteRenderer sr;
 
+    
+    #region Movement
     private float moveDirection;
     
     [Header("Movement Speed")]
     [SerializeField] private float baseMaxSpeed;
     [SerializeField] private float movementSpeed;
     private float currentMaxSpeed;
-    
+    #endregion
+    public float MoveDirection => moveDirection;
     public float MovementSpeed => movementSpeed;
 
+    #region Dash
     [Header("Dash")]
     [SerializeField] private float dashForce;
     [SerializeField] private float dashMaxTime;
     private float currentDashTime = 0;
     private bool dashActive = false;
-
+    #endregion
     public float DashForce => dashForce;
 
+    #region Friction
     [Header("Friction")]
     [SerializeField] private float turningSpeed;
     [SerializeField] private float walkingFriction;
-
+    #endregion
     public float TurningSpeed => turningSpeed;
     public float WalkingFriction => walkingFriction;
 
+    #region Jump
     [Header("Jump")]
     [SerializeField] private BouncingScript bouncer;
     [SerializeField] private float jumpForce;
@@ -46,15 +54,17 @@ public class PlayerController : MonoBehaviour, IUpdatable
     private float currentCoyoteTime = 0;
     private float currentBufferTime = 0;
     public bool jumpBuffered = false;
-
     private bool wallJumpAvailable = false;
+    #endregion
+    public float JumpForce => jumpForce;
+    public float WallJumpForce => wallJumpForce;
     public bool WallJumpAvailable { get { return wallJumpAvailable; } set { wallJumpAvailable = value; } }
 
-
+    #region Invincibility
     [Header("Invincibility")]
     [SerializeField] private float invincibilityDuration;
-
     private bool invincibility = false;
+    #endregion
     public bool Inivincibility { get { return invincibility; } }
 
 
@@ -71,6 +81,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
         moveRight = new MoveRightCommand(this);
         moveLeft = new MoveLeftCommand(this);
         moveDash = new DashCommand(this);
+        moveJump = new JumpCommand(this);
         CustomUpdateManager.Instance.Register(this);
     }
 
@@ -90,60 +101,8 @@ public class PlayerController : MonoBehaviour, IUpdatable
         PlayerMovement();
     }
 
-    private void PlayerInput()
-    {
-        moveDirection = Input.GetAxisRaw("Horizontal"); //hacia donde se mueve el jugador (1 = Derecha, -1 = Izquierda).
 
-        if (bouncer.playerBouncing)
-        {
-            rb2d.linearVelocity = new Vector2(0, jumpForce);
-        }
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            jumpBuffered = true;
-            currentBufferTime = bufferTime; //Reseteo el timer del buffer.
-        }
-
-        if (Input.GetKeyUp(KeyCode.X) && rb2d.linearVelocity.y > 0)
-        {
-            rb2d.linearVelocityY = rb2d.linearVelocity.y * 0.35f; //Si se deja de presionar el botón de salto, el impulso vertical disminuye.
-        }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            dashActive = true;
-            StartCoroutine(StartInvincibility());
-        }
-
-        //Rotacion del sprite.
-        if (moveDirection > 0)
-        {
-            sr.flipX = false;
-        }
-        else if (moveDirection < 0)
-        {
-            sr.flipX = true;
-        }
-    }
-
-    private void Jump()
-    {
-        rb2d.linearVelocity = new Vector2(rb2d.linearVelocity.x, jumpForce); //Se aplica un impulso vertical
-    }
-
-    private void WallJump()
-    {
-        //Se aplica un impulso vertical y un impulso horizontal en dirección contraria al movimiento del jugador.
-        if (moveDirection > 0)
-        {
-            rb2d.linearVelocity = new Vector2(-wallJumpForce, jumpForce);
-        }
-        else if (moveDirection < 0)
-        {
-            rb2d.linearVelocity = new Vector2(wallJumpForce, jumpForce);
-        }
-    }
 
     private void Dash()
     {
@@ -195,6 +154,42 @@ public class PlayerController : MonoBehaviour, IUpdatable
         }
     }
 
+    private void PlayerInput()
+    {
+        moveDirection = Input.GetAxisRaw("Horizontal"); //hacia donde se mueve el jugador (1 = Derecha, -1 = Izquierda).
+
+        if (bouncer.playerBouncing)
+        {
+            rb2d.linearVelocity = new Vector2(0, jumpForce);
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            jumpBuffered = true;
+            currentBufferTime = bufferTime; //Reseteo el timer del buffer.
+        }
+
+        if (Input.GetKeyUp(KeyCode.X) && rb2d.linearVelocity.y > 0)
+        {
+            rb2d.linearVelocityY = rb2d.linearVelocity.y * 0.35f; //Si se deja de presionar el botón de salto, el impulso vertical disminuye.
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            dashActive = true;
+            StartCoroutine(StartInvincibility());
+        }
+
+        //Rotacion del sprite.
+        if (moveDirection > 0)
+        {
+            sr.flipX = false;
+        }
+        else if (moveDirection < 0)
+        {
+            sr.flipX = true;
+        }
+    }
     private void InputBuffer()
     {
         // Coyote time
@@ -221,16 +216,17 @@ public class PlayerController : MonoBehaviour, IUpdatable
         {
             if (playerGrounded || currentCoyoteTime > 0f)
             {
-                Jump();
+                moveJump.Execute();
                 jumpBuffered = false;
             }
             else if (wallJumpAvailable)
             {
-                WallJump();
+                
                 jumpBuffered = false;
             }
         }
     }
+    
     private IEnumerator StartInvincibility()
     {
         invincibility = true;

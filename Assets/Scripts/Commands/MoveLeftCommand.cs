@@ -2,7 +2,7 @@
 
 public class MoveLeftCommand : ICommand
 {
-    PlayerController player;
+    private PlayerController player;
 
     public MoveLeftCommand(PlayerController playerController)
     {
