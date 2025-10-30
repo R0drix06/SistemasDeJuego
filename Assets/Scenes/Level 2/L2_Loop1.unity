@@ -207,6 +207,14 @@ PrefabInstance:
       value: KineticVolume
       objectReference: {fileID: 0}
     - target: {fileID: 5412887197045939578, guid: e80d94beb1a655043b0d7e6b108c42c9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412887197045939578, guid: e80d94beb1a655043b0d7e6b108c42c9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412887197045939578, guid: e80d94beb1a655043b0d7e6b108c42c9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14
       objectReference: {fileID: 0}
@@ -5307,7 +5315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8056141012039733265, guid: c2deb0fbbac9eb14f866d872d59749e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: -2.92
       objectReference: {fileID: 0}
     - target: {fileID: 8056141012039733265, guid: c2deb0fbbac9eb14f866d872d59749e3, type: 3}
       propertyPath: m_LocalPosition.z
