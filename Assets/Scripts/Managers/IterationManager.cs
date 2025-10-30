@@ -66,7 +66,7 @@ public class IterationManager : MonoBehaviour
 
     public void LoadLevel()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("L1_Loop1");
     }
 
     public void LoadMenu()
