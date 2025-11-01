@@ -25,8 +25,6 @@ public class LaserConfigs : MonoBehaviour, IUpdatable
 
     #endregion
 
-
-
     private void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
