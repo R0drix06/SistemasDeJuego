@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 5d6246d4776b26648a264a6ed684ed8f
+guid: 29ffe4abd70ff4d4fab0bbdb2a78e104
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2147826417139810695
-    second: 1761705481666_0
-  - first:
-      213: -2206826833038149986
-    second: 1761705481666_1
+      213: -8683390339475574254
+    second: laserEmisor_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1761705481666_0
+      name: laserEmisor_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 4
-        height: 16
+        y: 4
+        width: 32
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 97e7e27d0436132e0800000000000000
-      internalID: -2147826417139810695
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 1761705481666_1
-      rect:
-        serializedVersion: 2
-        x: 28
-        y: 0
-        width: 4
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e96f5f700b6cf51e0800000000000000
-      internalID: -2206826833038149986
+      spriteID: 212ff792e766e7780800000000000000
+      internalID: -8683390339475574254
       vertices: []
       indices: 
       edges: []
@@ -150,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: af85d449a4bf25a4194f118ac7605ca8
+    spriteID: 6a51bea6bc91bd24a8ec1142bae35baa
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1761705481666_0: -2147826417139810695
-      1761705481666_1: -2206826833038149986
+      laserEmisor_0: -8683390339475574254
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

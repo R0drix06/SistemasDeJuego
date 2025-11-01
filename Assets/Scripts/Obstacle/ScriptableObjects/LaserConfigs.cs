@@ -84,7 +84,7 @@ public class LaserConfigs : MonoBehaviour, IUpdatable
         timer += Time.deltaTime;
         if (timer > cooldown)
         {
-            StartCoroutine(spriteFlash.FlashCoroutine(2, startColor, flashColor, 1));
+            StartCoroutine(spriteFlash.FlashCoroutine(1, startColor, flashColor, 4));
             timer = 0;
         }
     }

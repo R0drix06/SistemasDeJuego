@@ -30,11 +30,11 @@ public class Rocket : MonoBehaviour, IObstacle, IUpdatable
     {
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player");
-        CustomUpdateManager.Instance.Register(this);
-        IterationManager.Instance.updatables.Add(this);
         initState = new RocketInitState();
         middleState = new RocketMiddleState();
         finalState = new RocketFinalState();
+        CustomUpdateManager.Instance.Register(this);
+        IterationManager.Instance.updatables.Add(this);
     }
 
     public void Tick(float deltaTime)
@@ -86,10 +86,7 @@ public class Rocket : MonoBehaviour, IObstacle, IUpdatable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject)
-        {
-            Deactivate();
-        }
+        Deactivate();
     }
 
 }

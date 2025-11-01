@@ -102,10 +102,6 @@ public class PlayerController : MonoBehaviour, IUpdatable
         PlayerMovement();
     }
 
-
-
-
-
     private void PlayerMovement()
     {
         if (moveDirection > 0)

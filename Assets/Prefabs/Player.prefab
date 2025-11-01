@@ -356,15 +356,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2d: {fileID: 9049098145970017905}
   sr: {fileID: 5694190424195117990}
-  baseMaxSpeed: 15
+  baseMaxSpeed: 10
   movementSpeed: 2
-  dashForce: 75
-  dashMaxTime: 0.05
-  turningSpeed: 3
+  dashForce: 50
+  dashMaxTime: 0.075
+  dashCooldown: 0.7
+  turningSpeed: 0.8
   walkingFriction: 0.8
   bouncer: {fileID: 2282397173151118477}
-  jumpForce: 20
-  wallJumpForce: 20
+  jumpForce: 25
+  wallJumpForce: 25
   coyoteTime: 0.075
   bufferTime: 0.15
   jumpBuffered: 0

@@ -7,10 +7,10 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Level 1/L1_Loop1.unity
-    guid: fcd087c992fdd3f468ea9f7fe8578e6e
+    guid: 826026e574afc9444819b9e16a33ad60
   - enabled: 1
     path: Assets/Scenes/Level 1/L1_Loop2.unity
-    guid: 826026e574afc9444819b9e16a33ad60
+    guid: 2f345ce0e0655d64ba99d1d67b531f95
   - enabled: 1
     path: Assets/Scenes/Level 1/L1_Loop3.unity
     guid: 08e352a0042a95c4a8cb4621f2f3aea2

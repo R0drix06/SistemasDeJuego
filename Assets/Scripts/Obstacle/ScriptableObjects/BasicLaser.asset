@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BasicLaser
   m_EditorClassIdentifier: 
   startColor: {r: 1, g: 0.096226394, b: 0.096226394, a: 1}
-  flashColor: {r: 1, g: 0.4660377, b: 0.4660377, a: 1}
-  cooldown: 2
+  flashColor: {r: 0.7735849, g: 0, b: 0, a: 1}
+  cooldown: 1
   canMove: 0
   moveSpeed: 5
   moveCooldown: 2

@@ -945,22 +945,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4777345226595229642, guid: aff0a1baed16e624db47fea3520553ec, type: 3}
-      propertyPath: jumpForce
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777345226595229642, guid: aff0a1baed16e624db47fea3520553ec, type: 3}
-      propertyPath: baseMaxSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777345226595229642, guid: aff0a1baed16e624db47fea3520553ec, type: 3}
-      propertyPath: turningSpeed
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4777345226595229642, guid: aff0a1baed16e624db47fea3520553ec, type: 3}
-      propertyPath: wallJumpForce
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 7490295752784956056, guid: aff0a1baed16e624db47fea3520553ec, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.15
