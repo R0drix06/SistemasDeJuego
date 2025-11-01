@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour, IUpdatable
     [Header("Dash")]
     [SerializeField] private float dashForce;
     [SerializeField] private float dashMaxTime;
+    [SerializeField] private float dashCooldown;
+    private float currentCooldown;
     private float currentDashTime = 0;
     private bool dashActive = false;
     #endregion
@@ -103,27 +105,6 @@ public class PlayerController : MonoBehaviour, IUpdatable
 
 
 
-    private void Dash()
-    {
-        if (dashActive)
-        {
-            currentDashTime += Time.deltaTime;
-            currentMaxSpeed = dashForce; //Aumenta la velocidad máxima.
-
-            moveDash.Execute();
-
-        }
-        else
-        {
-            currentMaxSpeed = baseMaxSpeed; //resetea la velocidad máxima.
-        }
-        
-        if (currentDashTime > dashMaxTime) //Desactiva el dash al terminar el timer
-        {
-            currentDashTime = 0;
-            dashActive = false;
-        }
-    }
 
     private void PlayerMovement()
     {
@@ -156,6 +137,11 @@ public class PlayerController : MonoBehaviour, IUpdatable
     private void PlayerInput()
     {
         moveDirection = Input.GetAxisRaw("Horizontal"); //hacia donde se mueve el jugador (1 = Derecha, -1 = Izquierda).
+        
+        if (currentCooldown < dashCooldown)
+            currentCooldown += Time.deltaTime;
+        else
+            currentCooldown = dashCooldown;
 
         if (bouncer.playerBouncing)
         {
@@ -173,7 +159,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
             rb2d.linearVelocityY = rb2d.linearVelocity.y * 0.35f; //Si se deja de presionar el botón de salto, el impulso vertical disminuye.
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && currentCooldown >= dashCooldown)
         {
             dashActive = true;
             StartCoroutine(StartInvincibility());
@@ -187,6 +173,28 @@ public class PlayerController : MonoBehaviour, IUpdatable
         else if (moveDirection < 0)
         {
             sr.flipX = true;
+        }
+    }
+    private void Dash()
+    {
+        if (dashActive)
+        {
+            currentDashTime += Time.deltaTime;
+            currentMaxSpeed = dashForce; //Aumenta la velocidad máxima.
+
+            moveDash.Execute();
+
+        }
+        else
+        {
+            currentMaxSpeed = baseMaxSpeed; //resetea la velocidad máxima.
+        }
+        
+        if (currentDashTime > dashMaxTime) //Desactiva el dash al terminar el timer
+        {
+            currentCooldown = 0;
+            currentDashTime = 0;
+            dashActive = false;
         }
     }
     private void InputBuffer()
