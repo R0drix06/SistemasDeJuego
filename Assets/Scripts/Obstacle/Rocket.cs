@@ -19,7 +19,6 @@ public class Rocket : MonoBehaviour, IObstacle, IUpdatable
     [SerializeField] private float buildUpSpeed;
     private GameObject target;
 
-
     private IObjectPool <GameObject> rocketPool;
     public IObjectPool<GameObject> RocketPool { set =>  rocketPool = value; }
 
@@ -72,7 +71,7 @@ public class Rocket : MonoBehaviour, IObstacle, IUpdatable
 
     public void Deactivate()
     {
-        rb.linearVelocity = new Vector2 (0, 0);
+        rb.linearVelocity = new Vector2(0, 0);
         rb.angularVelocity = 0;
         buildUpCounter = 0;
         rocketPool.Release(gameObject);

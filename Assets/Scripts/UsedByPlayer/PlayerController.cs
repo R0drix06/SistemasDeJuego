@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
     public Rigidbody2D rb2d;
     public SpriteRenderer sr;
 
+  
     
     #region Movement
     private float moveDirection;

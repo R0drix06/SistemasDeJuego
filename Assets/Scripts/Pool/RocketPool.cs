@@ -9,7 +9,7 @@ public class RocketPool : MonoBehaviour
 
     private IObjectPool <GameObject> rocketPool;
 
-    [SerializeField] private bool collectionCheck = true;
+    private bool collectionCheck = true;
 
     private int defaultCapacity;
     private int maxCapacity = 1; //For evading MaxSizeError
@@ -36,7 +36,7 @@ public class RocketPool : MonoBehaviour
     }
 
     private void OnReleaseToPool(GameObject poolObject)
-    {
+    { 
         poolObject.gameObject.SetActive(false);
     }
 
