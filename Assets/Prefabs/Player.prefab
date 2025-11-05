@@ -360,7 +360,7 @@ MonoBehaviour:
   movementSpeed: 2
   dashForce: 50
   dashMaxTime: 0.075
-  dashCooldown: 0.7
+  dashCooldown: 0.5
   turningSpeed: 0.8
   walkingFriction: 0.8
   bouncer: {fileID: 2282397173151118477}
