@@ -8,7 +8,7 @@ public class IterationManager : MonoBehaviour
     public int currentLevel = 1;
     public int currentLoop = 1;
 
-    private int MaxLevel = 4;
+    private int MaxLevel = 6;
 
     public List<IUpdatable> updatables = new List<IUpdatable>();
 
