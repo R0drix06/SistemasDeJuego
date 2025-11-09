@@ -1,18 +1,21 @@
 using UnityEngine;
 
-public class LaserConfigs : MonoBehaviour, IUpdatable
+public class LaserConfigs : MonoBehaviour, IUpdatable, IObstacle
 {
     [SerializeField] private LaserTypes laser;
+    public string id => "Laser";
 
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider;
     private SpriteFlash spriteFlash;
 
+    #region FlashConfigs
     private Color startColor;
     private Color flashColor;
 
     private float timer;
     private float cooldown;
+    #endregion
 
     #region LaserMovement
 
@@ -22,6 +25,7 @@ public class LaserConfigs : MonoBehaviour, IUpdatable
     private float moveTimer;
     private float moveSpeed;
     private float moveCooldown;
+
 
     #endregion
 
