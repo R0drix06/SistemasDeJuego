@@ -50,6 +50,7 @@ public class RocketPool : MonoBehaviour
     public void ShootObject(Vector2 transform, Quaternion rotation)
     {
         GameObject rocket = rocketPool.Get();
+        rocket.GetComponent<Rocket>().ResetState();
 
         if (rocket == null) return; //ThrowException (?) Sino, por qué tiraría null? No es posible sobrecargar los cohetes en el juego actual.
 

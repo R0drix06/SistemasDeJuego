@@ -5,23 +5,29 @@ public class Rocket : MonoBehaviour, IObstacle, IUpdatable
 {
     private Rigidbody2D rb;
 
+    #region States
     private RocketInitState initState;
     private RocketMiddleState middleState;
     private RocketFinalState finalState;
+    #endregion
 
+    #region Movement Variables
     private float speed;
-    public float Speed { set => speed = value; }
-
     private float rotationSpeed;
+    public float Speed { set => speed = value; }
     public float RotationSpeed { set => rotationSpeed = value; }
+    #endregion
 
+    #region State Changers
     private float buildUpCounter = 0;
     [SerializeField] private float buildUpSpeed;
+    private bool isReleased = false;
+    #endregion
+
     private GameObject target;
 
     private IObjectPool <GameObject> rocketPool;
     public IObjectPool<GameObject> RocketPool { set =>  rocketPool = value; }
-
 
     public string id => "Rocket";
 
@@ -59,7 +65,7 @@ public class Rocket : MonoBehaviour, IObstacle, IUpdatable
         {
             finalState.ChangeRocketState(this);
         }
-        else if (buildUpCounter >= buildUpSpeed/3)
+        else if (buildUpCounter >= buildUpSpeed/2)
         {
             middleState.ChangeRocketState(this);
         }
@@ -69,11 +75,17 @@ public class Rocket : MonoBehaviour, IObstacle, IUpdatable
         }
     }
 
+    public void ResetState()
+    {
+        isReleased = false;
+        buildUpCounter = 0;
+    }
+
     public void Deactivate()
     {
-        rb.linearVelocity = new Vector2(0, 0);
-        rb.angularVelocity = 0;
-        buildUpCounter = 0;
+        if (isReleased) return;
+
+        isReleased = true;
         rocketPool.Release(gameObject);
     }
 
