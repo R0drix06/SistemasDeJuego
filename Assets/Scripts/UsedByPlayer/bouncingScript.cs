@@ -17,6 +17,10 @@ public class BouncingScript : MonoBehaviour, IUpdatable
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
 
+    private void OnDestroy()
+    {
+        CustomUpdateManager.Instance.Unregister(this);
+    }
 
     public void Tick(float deltaTime)
     {

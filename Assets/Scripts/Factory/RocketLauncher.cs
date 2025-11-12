@@ -19,6 +19,11 @@ public class RocketLauncher : MonoBehaviour, IUpdatable
         IterationManager.Instance.updatables.Add(this);
     }
 
+    private void OnDestroy()
+    {
+        CustomUpdateManager.Instance.Unregister(this);
+    }
+
     public void Tick(float deltaTime)
     {
         currentTime += Time.deltaTime;

@@ -33,14 +33,11 @@ public class IterationManager : MonoBehaviour
 
     public void ResetLevel()
     {
-        Unregister();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void NextLevel()
     {
-        Unregister();
-
         if (currentLevel > MaxLevel)
         {
             currentLevel = 1;
@@ -57,8 +54,6 @@ public class IterationManager : MonoBehaviour
 
     public void NextLoop()
     {
-        Unregister();
-
         currentLoop ++;
 
         SceneManager.LoadScene("L" + currentLevel.ToString() + "_Loop" + currentLoop.ToString());

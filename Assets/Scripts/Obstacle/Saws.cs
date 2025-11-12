@@ -13,6 +13,11 @@ public class Saws : MonoBehaviour, IObstacle, IUpdatable
         IterationManager.Instance.updatables.Add(this);
     }
 
+    private void OnDestroy()
+    {
+        CustomUpdateManager.Instance.Unregister(this);
+    }
+
     public void Tick(float deltaTime)
     {
         Behaviour();

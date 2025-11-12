@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MachineLearningTitle (1024 x 1024 px)_0: 2496069239750794318
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

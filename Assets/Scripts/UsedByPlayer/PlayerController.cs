@@ -88,6 +88,11 @@ public class PlayerController : MonoBehaviour, IUpdatable
         moveWallJump = new WallJumpCommand(this);
     }
 
+    private void OnDestroy()
+    {
+        CustomUpdateManager.Instance.Unregister(this);
+    }
+
     public void Tick(float deltaTime)
     {
         PlayerInput();

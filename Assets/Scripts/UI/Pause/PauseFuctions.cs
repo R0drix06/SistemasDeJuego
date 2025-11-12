@@ -12,6 +12,11 @@ public class PauseFuctions : MonoBehaviour, IUpdatable
         IterationManager.Instance.updatables.Add(this);
     }
 
+    private void OnDestroy()
+    {
+        CustomUpdateManager.Instance.Unregister(this);
+    }
+
     public void Tick(float deltaTime)
     {
         if (Input.GetKeyUp(KeyCode.Escape) && !isPause)
@@ -34,7 +39,6 @@ public class PauseFuctions : MonoBehaviour, IUpdatable
     public void GoToMenu()
     {
         Time.timeScale = 1f;
-        IterationManager.Instance.Unregister();
         IterationManager.Instance.LoadMenu();
     }
 

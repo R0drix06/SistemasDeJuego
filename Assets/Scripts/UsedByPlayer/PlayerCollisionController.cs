@@ -15,12 +15,6 @@ public class PlayerCollisionController : MonoBehaviour
         bouncingScript = GetComponentInChildren<BouncingScript>();
     }
 
-    private void Unregister()
-    {
-        CustomUpdateManager.Instance.Unregister(playerController);
-        CustomUpdateManager.Instance.Unregister(bouncingScript);
-    }
-
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Ground"))
@@ -51,13 +45,11 @@ public class PlayerCollisionController : MonoBehaviour
     {
         if (collision.collider.CompareTag("Rocket"))
         {
-            Unregister();
             IterationManager.Instance.ResetLevel();
         }
 
         if (collision.collider.CompareTag("Spikes"))
         {
-            Unregister();
             IterationManager.Instance.ResetLevel();
         }
     }
@@ -66,24 +58,20 @@ public class PlayerCollisionController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Laser") && playerController.Inivincibility == false)
         {
-            Unregister();
             IterationManager.Instance.ResetLevel();
         }
         if (collision.gameObject.CompareTag("Saw"))
         {
-            Unregister();
             IterationManager.Instance.ResetLevel();
         }
 
         if (collision.gameObject.CompareTag("Goal"))
         {
-            Unregister();
             IterationManager.Instance.NextLoop();
         }
 
         if (collision.gameObject.CompareTag("LevelGoal"))
         {
-            Unregister();
             IterationManager.Instance.NextLevel();
         }
 
