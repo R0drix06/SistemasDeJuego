@@ -80,12 +80,12 @@ public class PlayerController : MonoBehaviour, IUpdatable
 
     void Start()
     { 
+        CustomUpdateManager.Instance.Register(this);
         moveRight = new MoveRightCommand(this);
         moveLeft = new MoveLeftCommand(this);
         moveDash = new DashCommand(this);
         moveJump = new JumpCommand(this);
         moveWallJump = new WallJumpCommand(this);
-        CustomUpdateManager.Instance.Register(this);
     }
 
     public void Tick(float deltaTime)

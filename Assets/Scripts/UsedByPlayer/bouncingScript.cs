@@ -11,10 +11,10 @@ public class BouncingScript : MonoBehaviour, IUpdatable
 
     private void Start()
     {
+        CustomUpdateManager.Instance.Register(this);
         playerController = GetComponentInParent<PlayerController>();
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        CustomUpdateManager.Instance.Register(this);
     }
 
 

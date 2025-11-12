@@ -79,7 +79,7 @@ public class IterationManager : MonoBehaviour
         Application.Quit();
     }
 
-    private void Unregister()
+    public void Unregister()
     {
         
         foreach (var item in updatables)

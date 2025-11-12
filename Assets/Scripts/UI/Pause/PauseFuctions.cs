@@ -34,6 +34,7 @@ public class PauseFuctions : MonoBehaviour, IUpdatable
     public void GoToMenu()
     {
         Time.timeScale = 1f;
+        IterationManager.Instance.Unregister();
         IterationManager.Instance.LoadMenu();
     }
 
