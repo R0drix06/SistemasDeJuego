@@ -383,3 +383,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bouncingScript: {fileID: 2282397173151118477}
+  xInputPrompt: {fileID: 0}
+  lrInputPrompt: {fileID: 0}
+  cInputPrompt: {fileID: 0}
