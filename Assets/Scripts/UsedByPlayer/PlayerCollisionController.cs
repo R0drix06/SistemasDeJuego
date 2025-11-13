@@ -56,10 +56,6 @@ public class PlayerCollisionController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Laser") && playerController.Inivincibility == false)
-        {
-            IterationManager.Instance.ResetLevel();
-        }
         if (collision.gameObject.CompareTag("Saw"))
         {
             IterationManager.Instance.ResetLevel();
@@ -106,6 +102,14 @@ public class PlayerCollisionController : MonoBehaviour
         if (collision.gameObject.CompareTag("C_Prompt"))
         {
             cInputPrompt?.SetActive(false);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Laser") && playerController.Inivincibility == false)
+        {
+            IterationManager.Instance.ResetLevel();
         }
     }
 }
