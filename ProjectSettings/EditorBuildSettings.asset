@@ -45,6 +45,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Level 5/L5_Loop1.unity
     guid: 1b05cd1d24343214c92b4d114d35157c
   - enabled: 1
+    path: Assets/Scenes/Level 5/L5_Loop2.unity
+    guid: a8318aaa458550344874ffe8f3e7209b
+  - enabled: 1
     path: Assets/Scenes/Level 6/L6_Loop1.unity
     guid: e7fc8ad4b70d4eb419165835050259fd
   - enabled: 1
