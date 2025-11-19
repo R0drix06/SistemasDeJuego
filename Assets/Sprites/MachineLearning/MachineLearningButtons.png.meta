@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MachineLearningButtons_0: -6307176877075479457
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
