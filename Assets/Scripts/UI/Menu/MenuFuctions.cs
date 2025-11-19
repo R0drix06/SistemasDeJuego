@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class MenuFuctions : MonoBehaviour
 {
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject SoundMenu;
+    [SerializeField] private GameObject ControlsMenu;
 
     public void Continue()
     {
@@ -18,6 +21,16 @@ public class MenuFuctions : MonoBehaviour
     public void Sound()
     {
         SoundMenu.SetActive(true);
+    }
+
+    public void Controls()
+    {
+        ControlsMenu.SetActive(true);
+    }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene("L7_Loop1");
     }
 
     public void BackToDesk()
