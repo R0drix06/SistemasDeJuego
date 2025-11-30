@@ -53,9 +53,9 @@ public class PlayerController : MonoBehaviour, IUpdatable
     [SerializeField] private BouncingScript bouncer;
     [SerializeField] private float jumpForce;
     [SerializeField] private float wallJumpForce;
-    [SerializeField] private float coyoteTime;
+    [SerializeField] public float coyoteTime;
     [SerializeField] private float bufferTime;
-    private float currentCoyoteTime = 0;
+    public float currentCoyoteTime = 0;
     private float currentBufferTime = 0;
     public bool jumpBuffered = false;
     private bool wallJumpAvailable = false;

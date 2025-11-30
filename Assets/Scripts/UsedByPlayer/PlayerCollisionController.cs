@@ -38,6 +38,7 @@ public class PlayerCollisionController : MonoBehaviour
         if (collision.collider.CompareTag("Wall"))
         {
             playerController.WallJumpAvailable = false;
+            playerController.currentCoyoteTime = playerController.coyoteTime;
         }
     }
 

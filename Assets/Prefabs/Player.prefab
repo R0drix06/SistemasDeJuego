@@ -359,15 +359,16 @@ MonoBehaviour:
   baseMaxSpeed: 10
   movementSpeed: 2
   dashForce: 50
-  dashMaxTime: 0.075
+  dashMaxTime: 0.1
   dashCooldown: 0.4
   turningSpeed: 0.8
   walkingFriction: 0.8
   bouncer: {fileID: 2282397173151118477}
   jumpForce: 25
   wallJumpForce: 25
-  coyoteTime: 0.075
+  coyoteTime: 0.1
   bufferTime: 0.15
+  currentCoyoteTime: 0
   jumpBuffered: 0
   invincibilityDuration: 0.2
 --- !u!114 &9196086542395481257
