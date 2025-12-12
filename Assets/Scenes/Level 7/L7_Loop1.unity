@@ -7279,11 +7279,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8506743738635527407, guid: 3dd548419c09de4459d889f2f189061a, type: 3}
       propertyPath: currentLoop
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8506743738635527407, guid: 3dd548419c09de4459d889f2f189061a, type: 3}
       propertyPath: currentLevel
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
