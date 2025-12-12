@@ -1,0 +1,9 @@
+How to use:
+
+1.Download and unzip
+2.Copy the "WebGLTemplates" folder into your project's "Assets" folder
+3.File -> Build Settings... -> WebGL -> Player Settings... -> Select the "BetterMinimal" template
+4.(Optional) Customize settings
+	a.Enter colour in the "Background" field
+	b.Enter "false" in the "Scale to fit" field to disable scaling
+	c.Enter "true" in the "Optimize for pixel art" field to use CSS more appropriate for pixel art

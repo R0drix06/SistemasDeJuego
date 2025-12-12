@@ -703,7 +703,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000a5f9f54f77f96398138d9b3fa731803e
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -14693,7 +14693,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3/4
+  m_text: 1/4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b1af265403affa94493e8351acc35764, type: 2}
   m_sharedMaterial: {fileID: -6160332746945484792, guid: b1af265403affa94493e8351acc35764, type: 2}
