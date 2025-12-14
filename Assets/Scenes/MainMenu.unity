@@ -6819,6 +6819,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VideoVHS
       objectReference: {fileID: 0}
+    - target: {fileID: 3700083712488838999, guid: 8a55b744c847ab4419976638cbddaf6a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6214828700752133316, guid: 8a55b744c847ab4419976638cbddaf6a, type: 3}
       propertyPath: m_Pivot.x
       value: 0
