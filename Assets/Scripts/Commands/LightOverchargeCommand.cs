@@ -10,10 +10,10 @@ public class LightOverchargeCommand
     public LightOverchargeCommand (Light2D light)
     {
         this.light = light;
-        ColorUtility.TryParseHtmlString("72EDFF", out Color color1);
-        baseColor = Color.blue;
-        ColorUtility.TryParseHtmlString("FF62D0", out Color color2);
-        overchargeColor = Color.red;
+        ColorUtility.TryParseHtmlString("#72EDFF", out Color color1);
+        baseColor = color1;
+        ColorUtility.TryParseHtmlString("#FF62D0", out Color color2);
+        overchargeColor = color2;
     }
 
     public void Execute(bool activate)
