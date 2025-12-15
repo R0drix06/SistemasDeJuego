@@ -359,6 +359,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eff18849492f484eafe27e442927be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpSFX: {fileID: 8300000, guid: 89fb40476af729c4aa3e24cbd6e9402c, type: 3}
+  landSFX: {fileID: 8300000, guid: 9495418d4f84332418e1e9ab3ab78802, type: 3}
+  dashSFX: {fileID: 8300000, guid: 13fd9e2285763ee4e9b765b591127559, type: 3}
   rb2d: {fileID: 9049098145970017905}
   sr: {fileID: 5694190424195117990}
   baseMaxSpeed: 10

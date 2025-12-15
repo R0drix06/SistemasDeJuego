@@ -30,7 +30,7 @@ public class MenuFuctions : MonoBehaviour
 
     public void Credits()
     {
-        SceneManager.LoadScene("L13_Loop1");
+        SceneManager.LoadScene("L16_Loop1");
     }
 
     public void BackToDesk()

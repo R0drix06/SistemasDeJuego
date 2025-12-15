@@ -14,6 +14,12 @@ public class PlayerController : MonoBehaviour, IUpdatable
 
     #endregion
 
+    #region SFX
+    [SerializeField] private AudioClip jumpSFX;
+    [SerializeField] public AudioClip landSFX;
+    [SerializeField] private AudioClip dashSFX;
+    #endregion
+
     public Rigidbody2D rb2d;
     public SpriteRenderer sr;
     private Animator animator;
@@ -87,6 +93,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
         moveDash = new DashCommand(this);
         moveJump = new JumpCommand(this);
         moveWallJump = new WallJumpCommand(this);
+
     }
 
     private void OnDestroy()
@@ -156,6 +163,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
 
         if (Input.GetKeyDown(KeyCode.X))
         {
+            AudioManager.Instance.PlaySFXSound(jumpSFX, transform, 0.5f);
             jumpBuffered = true;
             currentBufferTime = bufferTime; //Reseteo el timer del buffer.
         }
@@ -167,6 +175,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
 
         if (Input.GetKeyDown(KeyCode.C) && currentCooldown >= dashCooldown)
         {
+            AudioManager.Instance.PlaySFXSound(dashSFX, transform, 0.5f);
             animator.SetTrigger("dash");
             dashActive = true;
             StartCoroutine(StartInvincibility());

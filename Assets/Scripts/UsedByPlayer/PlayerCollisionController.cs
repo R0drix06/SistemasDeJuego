@@ -14,6 +14,23 @@ public class PlayerCollisionController : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         bouncingScript = GetComponentInChildren<BouncingScript>();
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
+        {
+            AudioManager.Instance.PlaySFXSound(playerController.landSFX, playerController.transform, 0.5f);
+        }
+
+        if (collision.collider.CompareTag("Rocket"))
+        {
+            IterationManager.Instance.ResetLevel();
+        }
+
+        if (collision.collider.CompareTag("Spikes"))
+        {
+            IterationManager.Instance.ResetLevel();
+        }
+    }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -42,18 +59,6 @@ public class PlayerCollisionController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.collider.CompareTag("Rocket"))
-        {
-            IterationManager.Instance.ResetLevel();
-        }
-
-        if (collision.collider.CompareTag("Spikes"))
-        {
-            IterationManager.Instance.ResetLevel();
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
