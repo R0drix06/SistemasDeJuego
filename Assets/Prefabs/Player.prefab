@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac2a7498417ea5498ed9b2cb728eea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overchargeLight: {fileID: 6360987091391244822}
   bounceTime: 0.25
   playerBouncing: 0
 --- !u!1 &2478464891736345982
@@ -193,6 +194,7 @@ GameObject:
   - component: {fileID: 9196086542395481257}
   - component: {fileID: 8519410420505068156}
   - component: {fileID: -6040311754943000391}
+  - component: {fileID: 5508174618790008379}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -478,6 +480,28 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!95 &5508174618790008379
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2478464891736345982}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 89760df11dcf314429f81d32f88e3abe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2490277566341431376
 GameObject:
   m_ObjectHideFlags: 0

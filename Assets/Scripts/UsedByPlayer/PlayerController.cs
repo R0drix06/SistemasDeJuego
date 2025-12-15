@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerController : MonoBehaviour, IUpdatable 
 {
@@ -15,8 +16,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
 
     public Rigidbody2D rb2d;
     public SpriteRenderer sr;
-
-  
+    private Animator animator;
     
     #region Movement
     private float moveDirection;
@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
     void Start()
     { 
         CustomUpdateManager.Instance.Register(this);
+        animator = GetComponent<Animator>();
         moveRight = new MoveRightCommand(this);
         moveLeft = new MoveLeftCommand(this);
         moveDash = new DashCommand(this);
@@ -140,7 +141,9 @@ public class PlayerController : MonoBehaviour, IUpdatable
     private void PlayerInput()
     {
         moveDirection = Input.GetAxisRaw("Horizontal"); //hacia donde se mueve el jugador (1 = Derecha, -1 = Izquierda).
-        
+        animator.SetFloat("run", moveDirection);
+        animator.SetFloat("inAir", rb2d.linearVelocityY);
+
         if (currentCooldown < dashCooldown)
             currentCooldown += Time.deltaTime;
         else
@@ -164,6 +167,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
 
         if (Input.GetKeyDown(KeyCode.C) && currentCooldown >= dashCooldown)
         {
+            animator.SetTrigger("dash");
             dashActive = true;
             StartCoroutine(StartInvincibility());
         }
@@ -243,5 +247,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
         yield return new WaitForSeconds(invincibilityDuration);
         invincibility = false;
     }
+
+    
    
 }
