@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            AudioManager.Instance.PlaySFXSound(jumpSFX, transform, 0.5f);
+            AudioManager.Instance.PlaySFXSound(jumpSFX, transform, 0.2f);
             jumpBuffered = true;
             currentBufferTime = bufferTime; //Reseteo el timer del buffer.
         }
@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
 
         if (Input.GetKeyDown(KeyCode.C) && currentCooldown >= dashCooldown)
         {
-            AudioManager.Instance.PlaySFXSound(dashSFX, transform, 0.5f);
+            AudioManager.Instance.PlaySFXSound(dashSFX, transform, 0.4f);
             animator.SetTrigger("dash");
             dashActive = true;
             StartCoroutine(StartInvincibility());

@@ -360,8 +360,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpSFX: {fileID: 8300000, guid: 89fb40476af729c4aa3e24cbd6e9402c, type: 3}
-  landSFX: {fileID: 8300000, guid: 9495418d4f84332418e1e9ab3ab78802, type: 3}
-  dashSFX: {fileID: 8300000, guid: 13fd9e2285763ee4e9b765b591127559, type: 3}
+  landSFX: {fileID: 8300000, guid: 8d6d7619511a7434680316515f3b361b, type: 3}
+  dashSFX: {fileID: 8300000, guid: c80f5d2d7e574f941a64e432b658a5d6, type: 3}
   rb2d: {fileID: 9049098145970017905}
   sr: {fileID: 5694190424195117990}
   baseMaxSpeed: 10

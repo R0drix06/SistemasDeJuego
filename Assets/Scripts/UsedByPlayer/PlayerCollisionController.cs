@@ -18,7 +18,7 @@ public class PlayerCollisionController : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground"))
         {
-            AudioManager.Instance.PlaySFXSound(playerController.landSFX, playerController.transform, 0.5f);
+            AudioManager.Instance.PlaySFXSound(playerController.landSFX, playerController.transform, 0.1f);
         }
 
         if (collision.collider.CompareTag("Rocket"))

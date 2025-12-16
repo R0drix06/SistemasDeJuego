@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -5,6 +6,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
     [SerializeField] private AudioSource sfxObject;
+
+    public event Action OnSongFinished;
 
     private void Awake()
     {
@@ -31,5 +34,15 @@ public class AudioManager : MonoBehaviour
         float clipLength = audiosource.clip.length;
 
         Destroy(audiosource.gameObject, clipLength);
+    }
+
+    public void PlayMusic(AudioSource source, AudioClip clip, Transform spawnTransform, float volume)
+    {
+        source.clip = clip;
+        source.volume = volume;
+        source.Play();
+
+        float clipLength = source.clip.length;
+
     }
 }
