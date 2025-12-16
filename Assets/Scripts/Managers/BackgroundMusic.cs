@@ -29,25 +29,7 @@ public class BackgroundMusic : MonoBehaviour
 
     private void Start()
     {
-        //CustomUpdateManager.Instance.Register(this);
         source = GetComponent<AudioSource>();
         AudioManager.Instance.PlayMusic(source, soundTrack[currentIndex], transform, 0.1f);
-        //AudioManager.Instance.OnSongFinished += () => IndexFunction();
     }
-
-
-    public void IndexFunction()
-    {
-        if (currentIndex == soundTrack.Count)
-            currentIndex = 0;
-        else
-            currentIndex++;
-
-        AudioManager.Instance.PlayMusic(source, soundTrack[currentIndex], transform, 0.1f);
-    }
-
-    //private void OnDestroy()
-    //{
-    //    CustomUpdateManager.Instance.Unregister(this);
-    //}
 }

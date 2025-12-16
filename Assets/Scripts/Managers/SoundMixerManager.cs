@@ -21,12 +21,12 @@ public class AudioMixerManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-
     public void SetMusicVolume(float volume)
     {
         audioMixer.SetFloat("musicVolume", Mathf.Log10(volume) * 20f);
 
     }
+
     public void SetSFXVolume(float volume)
     {
         audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20f);

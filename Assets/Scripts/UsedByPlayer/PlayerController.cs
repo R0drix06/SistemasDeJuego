@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour, IUpdatable
     [SerializeField] private AudioClip jumpSFX;
     [SerializeField] public AudioClip landSFX;
     [SerializeField] private AudioClip dashSFX;
+    [SerializeField] public AudioClip glitchSFX;
     #endregion
 
     public Rigidbody2D rb2d;
@@ -82,18 +83,20 @@ public class PlayerController : MonoBehaviour, IUpdatable
     private bool playerGrounded = false;
     public bool PlayerGrounded { get { return playerGrounded; } set { playerGrounded = value; } }
 
-    
-
     void Start()
     { 
         CustomUpdateManager.Instance.Register(this);
+        if (IterationManager.Instance.triggerGlitch)
+        {
+            AudioManager.Instance.PlaySFXSound(glitchSFX, transform, 1f);
+            IterationManager.Instance.triggerGlitch = false;
+        }
         animator = GetComponent<Animator>();
         moveRight = new MoveRightCommand(this);
         moveLeft = new MoveLeftCommand(this);
         moveDash = new DashCommand(this);
         moveJump = new JumpCommand(this);
         moveWallJump = new WallJumpCommand(this);
-
     }
 
     private void OnDestroy()

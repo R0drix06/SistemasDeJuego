@@ -8,6 +8,8 @@ public class IterationManager : MonoBehaviour
     public int currentLevel = 1;
     public int currentLoop = 1;
 
+    public bool triggerGlitch = false;
+
     private int MaxLevel = 16;
 
     public List<IUpdatable> updatables = new List<IUpdatable>();
@@ -33,6 +35,7 @@ public class IterationManager : MonoBehaviour
 
     public void ResetLevel()
     {
+        triggerGlitch = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

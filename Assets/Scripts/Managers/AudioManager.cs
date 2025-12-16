@@ -40,6 +40,7 @@ public class AudioManager : MonoBehaviour
     {
         source.clip = clip;
         source.volume = volume;
+        source.loop = true;
         source.Play();
 
         float clipLength = source.clip.length;
