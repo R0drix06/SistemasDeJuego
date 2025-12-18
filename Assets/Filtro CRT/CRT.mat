@@ -38,6 +38,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _Blur_Offset: 0.00075
+    - _Enabled: 0
+    - _Enbled: 0
     - _Scanlines_Enabled: 1
     - _Scanlines_Speed: 0
     m_Colors:
