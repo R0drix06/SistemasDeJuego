@@ -4,7 +4,7 @@ using UnityEngine.Rendering.Universal;
 public class CameraRender : MonoBehaviour
 {
     private UniversalAdditionalCameraData cameraData;
-    
+
     public void SetPostProcessing(bool enabled)
     {
         cameraData.renderPostProcessing = enabled;
@@ -31,11 +31,6 @@ public class CameraRender : MonoBehaviour
             Debug.LogError("El GameObject con tag IT no tiene IterationManager");
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
