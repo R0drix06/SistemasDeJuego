@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8506743738635527407}
   m_Layer: 0
   m_Name: IterationManager
-  m_TagString: Untagged
+  m_TagString: IT
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,5 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965091acddb5e204d8de2c60124069ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actualLevel: 1
-  MaxLevel: 2
+  currentLevel: 1
+  currentLoop: 1
+  isCRTon: 1
+  triggerGlitch: 0

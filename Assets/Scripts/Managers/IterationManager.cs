@@ -8,6 +8,8 @@ public class IterationManager : MonoBehaviour
     public int currentLevel = 1;
     public int currentLoop = 1;
 
+    public bool isCRTon = true;
+
     public bool triggerGlitch = false;
 
     private int MaxLevel = 16;
@@ -87,5 +89,15 @@ public class IterationManager : MonoBehaviour
 
         updatables.Clear();
         
+    }
+
+    public void CRT_Enabled()
+    {
+        isCRTon = true;
+    }
+
+    public void CRT_Disabled()
+    {
+        isCRTon = false;
     }
 }

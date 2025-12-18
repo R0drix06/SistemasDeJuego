@@ -17,6 +17,7 @@ TagManager:
   - X_Prompt
   - LR_Prompt
   - C_Prompt
+  - IT
   layers:
   - Default
   - TransparentFX
