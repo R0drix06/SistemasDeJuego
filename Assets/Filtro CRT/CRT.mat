@@ -37,7 +37,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Blur_Offset: 0.00075
+    - _Blur_Offset: 0.0005
     - _Enabled: 0
     - _Enbled: 0
     - _Scanlines_Enabled: 1
